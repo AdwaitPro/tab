@@ -8,6 +8,7 @@ Split bills, request USDC, lock escrowed deals and settle friendly bets between 
 
 [![Live](https://img.shields.io/badge/live-tab--pay.vercel.app-1A88F8?style=flat-square)](https://tab-pay.vercel.app)
 [![Base](https://img.shields.io/badge/chain-Base%20mainnet-0052FF?style=flat-square)](https://basescan.org/address/0xCe8dE8f1647ED91Db4Ba9B71B9AF94e2405cbCe9)
+[![Basescan](https://img.shields.io/badge/Basescan-source%20verified-2ea44f?style=flat-square)](https://basescan.org/address/0xCe8dE8f1647ED91Db4Ba9B71B9AF94e2405cbCe9#code)
 [![Verified](https://img.shields.io/badge/contract-Sourcify%20exact%20match-2ea44f?style=flat-square)](https://repo.sourcify.dev/contracts/full_match/8453/0xCe8dE8f1647ED91Db4Ba9B71B9AF94e2405cbCe9/)
 [![Coverage](https://img.shields.io/badge/contract%20coverage-100%25-2ea44f?style=flat-square)](contracts/SECURITY.md)
 [![PayBox](https://img.shields.io/badge/PayBox-plugin-111111?style=flat-square)](https://developer.paybox.sh)
