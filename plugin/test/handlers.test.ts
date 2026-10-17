@@ -665,3 +665,86 @@ describe("TabEscrow v2", () => {
     expect(sc.summary).toMatch(/TabEscrow holds 2\.50 USDC for you.*withdraw/);
   });
 });
+
+describe("payer addresses and plain-transfer interop", () => {
+  it("tab_request records payer_address and returns pay_any_agent", async () => {
+    let payerBody: unknown;
+    world.api = (method, path, body) => {
+      if (method === "POST" && path === "/api/requests") return { status: 201, body: requestRecord() };
+      if (method === "POST" && path === `/api/requests/${REQ_ID}/payer`) { payerBody = body; return { status: 200, body: requestRecord({ payer_address: FRIEND }) }; }
+      return undefined;
+    };
+    const result = await request({ recipient: ME, amount: "2", payer_address: FRIEND.toLowerCase(), expires_in_hours: 24 }, makeContext(world));
+    expect(payerBody).toEqual({ payer_address: FRIEND });
+    const line = `Any agent can pay this without Tab: send exactly 2.000417 USDC on Base to ${ME}. In PayBox that's request_transfer.`;
+    expect((result.structuredContent as { pay_any_agent: string }).pay_any_agent).toBe(line);
+    expect(text(result)).toContain(line);
+  });
+
+  it("payer endpoint failure does not fail tab_request", async () => {
+    world.api = (method, path) => (method === "POST" && path === "/api/requests" ? { status: 201, body: requestRecord() } : { status: 503, body: { error: { code: "internal", message: "x" } } });
+    const result = await request({ recipient: ME, amount: "2", payer_address: FRIEND, expires_in_hours: 24 }, makeContext(world));
+    expect(result.isError).toBeUndefined();
+  });
+
+  it("payer_address equal to recipient is rejected", async () => {
+    const result = await runTool("tab_request", () => request({ recipient: ME, amount: "2", payer_address: ME, expires_in_hours: 24 }, makeContext(world)));
+    expect(result.isError).toBe(true);
+  });
+
+  it("tab_split records each participant's payer_address and adds pay_any_agent per person", async () => {
+    const recorded: string[] = [];
+    world.api = (method, path, body) => {
+      if (method === "POST" && path === "/api/splits") {
+        const b = body as { requests: { payer_label: string; amount_atomic: string }[] };
+        return { status: 201, body: {
+          split: { id: "9aBcDeFgHiJkLmNoPqRsTu", recipient: ME, total_atomic: "6000000", memo: null, requester_label: null, created_at: "2026-10-18T12:00:00Z" },
+          requests: b.requests.map((r, i) => requestRecord({ id: `${"y".repeat(21)}${i}`, payer_label: r.payer_label, amount_atomic: r.amount_atomic, unique_atomic: (BigInt(r.amount_atomic) + 7n).toString() })),
+        } };
+      }
+      const m = /^\/api\/requests\/(\w+)\/payer$/.exec(path);
+      if (method === "POST" && m) { recorded.push(`${m[1]}=${(body as { payer_address: string }).payer_address}`); return { status: 200, body: requestRecord() }; }
+      return undefined;
+    };
+    const result = await split({ recipient: ME, total: "6", participants: [{ label: "Meera", payer_address: FRIEND }, { label: "Aarav" }], include_self: true }, makeContext(world));
+    expect(recorded).toEqual([`${"y".repeat(21)}0=${FRIEND}`]);
+    const pp = (result.structuredContent as { per_person: { pay_any_agent: string }[] }).per_person;
+    expect(pp[0]?.pay_any_agent).toBe(`Any agent can pay this without Tab: send exactly 2.000007 USDC on Base to ${ME}. In PayBox that's request_transfer.`);
+    expect(text(result)).toMatch(/request_transfer/);
+  });
+
+  it("tab_pay records the sender as payer only after checks pass", async () => {
+    const payers: unknown[] = [];
+    const record = requestRecord();
+    world.api = (method, path, body) => {
+      if (method === "GET" && path === `/api/requests/${REQ_ID}`) return { status: 200, body: record };
+      if (method === "POST" && path === `/api/requests/${REQ_ID}/payer`) { payers.push(body); return { status: 200, body: record }; }
+      return undefined;
+    };
+    world.usdc.set(FRIEND.toLowerCase(), 1n);
+    await runTool("tab_pay", () => pay({ link_or_id: REQ_ID, sender: FRIEND }, makeContext(world)));
+    expect(payers).toEqual([]);
+    world.usdc.set(FRIEND.toLowerCase(), 10_000_000n);
+    await pay({ link_or_id: REQ_ID, sender: FRIEND }, makeContext(world));
+    expect(payers).toEqual([{ payer_address: FRIEND }]);
+  });
+
+  it("tab_status recognises a plain transfer of the exact amount (no Tab involved)", async () => {
+    serveRequest();
+    world.logs.push({ from: OTHER, to: ME, value: 2_000_417n, block: 52_999_999n, tx: TX });
+    const result = await status({ ref: REQ_ID }, makeContext(world));
+    expect((result.structuredContent as { request: { status: string; payer: string } }).request).toMatchObject({ status: "paid", payer: OTHER });
+  });
+
+  it("tool descriptions point agents at resolve_username", async () => {
+    const { requestTool } = await import("../src/tools/request.js");
+    const { splitTool } = await import("../src/tools/split.js");
+    const { dealCreateTool } = await import("../src/tools/deal.js");
+    const { betCreateTool } = await import("../src/tools/bet.js");
+    const { payTool } = await import("../src/tools/pay.js");
+    for (const t of [requestTool, splitTool, dealCreateTool, betCreateTool, payTool]) {
+      expect(t.description).toMatch(/resolve_username/);
+      expect(t.description).not.toMatch(/—/);
+    }
+  });
+});

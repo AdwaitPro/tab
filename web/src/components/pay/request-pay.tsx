@@ -38,9 +38,7 @@ import { shortAddress } from "@/lib/text";
 import { errorMessage, isUserRejection } from "@/lib/wallet-errors";
 import { CheckMark } from "./check-mark";
 import { GrowthCard, PayWithAgentButton } from "./growth";
-import { Magnetic } from "@/components/motion/magnetic";
 import { Odometer } from "@/components/motion/odometer";
-import { TiltCard } from "@/components/motion/tilt-card";
 import { ShareSheet } from "./share-sheet";
 import { SparkleBurst } from "./sparkles";
 import { StatusIsland, type IslandState } from "./status-island";
@@ -246,8 +244,8 @@ export function RequestPay({ request, url, source }: RequestPayProps) {
   return (
     <>
       <StatusIsland state={island} />
-      <TiltCard className="animate-rise">
-      <Card className="sheen-sweep overflow-hidden">
+      <Card className="ticket animate-rise">
+        <div className="ticket-top pb-5">
         <div className="px-6 pt-6 sm:px-7 sm:pt-7">
           <div className="flex items-center gap-3">
             <Avatar label={requester ?? recipient} />
@@ -277,12 +275,11 @@ export function RequestPay({ request, url, source }: RequestPayProps) {
               </p>
             )}
             <p className="mt-2 flex items-baseline justify-center gap-2">
-              <Odometer value={formatUsdc(baseAmount)} className="text-amount font-black tracking-[-0.045em]" />
+              <Odometer value={formatUsdc(baseAmount)} className="text-amount sm:text-[80px]" />
               <span className="text-[20px] font-bold text-muted">USDC</span>
             </p>
             <p className="mt-2 text-[13px] text-subtle">
-              <span className="tabular font-mono">{formatUsdc(baseAmount)}</span> +{" "}
-              <span className="tabular font-mono">{formatUsdcExact(matchingCode)}</span> matching code
+              Plus a tiny <span className="tabular font-mono text-muted">{formatUsdcExact(matchingCode)}</span> tag so Tab can spot your payment
             </p>
             <div className="mt-3 flex justify-center">
               <StatusBadge status={status.status} phase={phase} payer={request.payer_label} />
@@ -290,6 +287,8 @@ export function RequestPay({ request, url, source }: RequestPayProps) {
           </div>
         </div>
 
+        </div>
+        <div className="ticket-bottom pt-5">
         <Perforation />
 
         <dl className="space-y-1 px-6 text-[15px] sm:px-7">
@@ -361,8 +360,8 @@ export function RequestPay({ request, url, source }: RequestPayProps) {
             </p>
           )}
         </div>
+        </div>
       </Card>
-      </TiltCard>
 
       <div className="mt-3">
         <PayWithAgentButton url={url} />
@@ -445,11 +444,9 @@ function PrimaryAction(props: {
   switch (props.phase) {
     case "connect":
       return (
-        <Magnetic>
-          <Button size="lg" block onClick={props.onConnect}>
-            <Wallet aria-hidden="true" /> Connect wallet
-          </Button>
-        </Magnetic>
+        <Button size="lg" block onClick={props.onConnect}>
+          <Wallet aria-hidden="true" /> Connect wallet
+        </Button>
       );
     case "wrong_network":
       return (
@@ -487,7 +484,6 @@ function PrimaryAction(props: {
     case "ready":
       return (
         <div className="space-y-2">
-          <Magnetic>
           <Button size="lg" block onClick={props.onPay} disabled={!props.firstCheckDone}>
             {!props.firstCheckDone ? (
               <>
@@ -499,7 +495,6 @@ function PrimaryAction(props: {
               </>
             )}
           </Button>
-          </Magnetic>
           {props.checking && props.firstCheckDone && (
             <p className="text-center text-[13px] text-pending">
               Still checking Base, if you already paid give it a moment
@@ -566,8 +561,9 @@ function Receipt(props: {
 }) {
   return (
     <div className="tilt-scene">
-    <Card className="flip-in paper-curl overflow-hidden" aria-live="polite">
+    <Card className="ticket flip-in" aria-live="polite">
       <div className="print-down">
+      <div className="ticket-top pb-5">
       <div className="relative px-6 pt-8 pb-6 text-center sm:px-7">
         <div className="relative mx-auto w-fit">
           <CheckMark />
@@ -593,11 +589,13 @@ function Receipt(props: {
           </p>
         )}
         <p className="relative mt-4 flex items-baseline justify-center gap-2">
-          <Odometer value={formatUsdc(props.amount)} className="text-amount font-black tracking-[-0.045em]" delayMs={500} />
+          <Odometer value={formatUsdc(props.amount)} className="text-amount sm:text-[80px]" delayMs={500} />
           <span className="text-[20px] font-bold text-muted">USDC</span>
           <PaidStamp />
         </p>
       </div>
+      </div>
+      <div className="ticket-bottom pt-5">
       <Perforation />
       <dl className="space-y-1 px-6 pb-6 text-[15px] sm:px-7">
         <Row label="Amount sent">
@@ -629,6 +627,7 @@ function Receipt(props: {
           </Row>
         )}
       </dl>
+      </div>
       </div>
     </Card>
     </div>

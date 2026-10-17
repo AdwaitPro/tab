@@ -47,6 +47,7 @@ export const dealCreateTool = {
   name: "deal_create",
   title: "Create an escrowed deal",
   description:
+    "If the user names a PayBox @username, resolve it to a Base address with PayBox's resolve_username tool first, then pass the address. " +
     "Lock USDC in the TabEscrow contract on Base for a buyer→seller deal (\"pay this designer 3 USDC when the logo " +
     "is delivered\"). TWO STEPS, one proposal each: if the buyer's USDC allowance for TabEscrow is below amount, this " +
     "returns step 1 = approve EXACTLY amount (never unlimited). After that transaction confirms, call deal_create " +

@@ -2,6 +2,7 @@ import { ArrowUpRight, BadgeCheck } from "lucide-react";
 import { Coin, Dice, Handshake, Lock, Sparkle, Ticket } from "@/components/illustrations";
 import { CopyPrompt } from "@/components/landing/install-prompt";
 import { HeroDemo } from "@/components/landing/hero-demo";
+import { LiveStrip } from "@/components/landing/live-strip";
 import { Magnetic } from "@/components/motion/magnetic";
 import { RevealHeadline } from "@/components/landing/reveal-headline";
 import { SiteHeader } from "@/components/site-chrome";
@@ -48,7 +49,7 @@ const FEATURES = [
     title: "Bets between friends",
     body: "Chainlink settles price bets and nobody holds the pot",
     art: <Dice className="size-20" float delay={1.6} rotate={10} />,
-    tint: "bg-danger-soft",
+    tint: "bg-[var(--violet-soft)]",
   },
 ];
 
@@ -63,8 +64,8 @@ export default function Landing() {
               <Sparkle className="size-3.5" /> Multiplayer money for AI agents
             </p>
             <RevealHeadline
-              text="Money is better together"
-              accent={["better"]}
+              text="Settle up in one sentence"
+              accent={["sentence"]}
               className="mt-6 text-[52px] leading-[0.95] font-black tracking-[-0.045em] sm:text-[72px] lg:text-[88px]"
             />
             <p
@@ -88,12 +89,11 @@ export default function Landing() {
 
           <div className="relative flex justify-center lg:justify-end">
             <Coin className="absolute -top-8 -left-2 hidden size-20 sm:left-6 sm:block" float rotate={-12} />
-            <Sparkle className="float absolute top-10 right-0 size-6 sm:right-10" />
-            <Dice className="absolute -bottom-10 left-6 z-10 size-16 sm:left-16" float delay={1.2} rotate={14} />
-            <Sparkle className="float absolute bottom-16 -left-1 size-4" color="var(--brand)" />
             <HeroDemo />
           </div>
         </section>
+
+        <LiveStrip escrow={ESCROW} />
 
         <section id="how" className="scroll-mt-20 py-16" aria-labelledby="how-title">
           <h2 id="how-title" className="text-[32px] font-bold tracking-[-0.03em] sm:text-[40px]">
@@ -136,7 +136,7 @@ export default function Landing() {
               <ol className="mt-6 space-y-4 text-[16px] leading-6">
                 {[
                   "Open PayBox and go to Plugins",
-                  "Turn on Tab under Unofficial plugins",
+                  "Find Tab in Plugins and switch it on",
                   "Ask your agent to split, request, hire or bet, then approve in PayBox",
                 ].map((text, i) => (
                   <li key={text} className="flex gap-3">
@@ -156,7 +156,7 @@ export default function Landing() {
               </div>
             </div>
             <div className="space-y-3">
-              <p className="text-[14px] font-semibold text-subtle">Try saying</p>
+              <p className="text-[14px] font-semibold text-subtle">Copy a prompt for your PayBox agent</p>
               <CopyPrompt prompt="Split dinner, 6 USDC, with Meera and Aarav" />
               <CopyPrompt prompt="Bet Meera 2 USDC that ETH is above 4,000 at 9 PM" />
               <CopyPrompt prompt="Pay Meera 3 USDC for a logo when she delivers" />

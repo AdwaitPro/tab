@@ -149,6 +149,10 @@ export class TabApi {
     return this.call(termsResponseSchema, "/api/terms", { method: "POST", body: JSON.stringify({ hash, body }) });
   }
 
+  setPayer(requestId: string, payerAddress: string): Promise<RequestRecord> {
+    return this.call(requestRecordSchema, `/api/requests/${encodeURIComponent(requestId)}/payer`, { method: "POST", body: JSON.stringify({ payer_address: payerAddress }) });
+  }
+
   getRequest(requestId: string): Promise<RequestRecord> {
     return this.call(requestRecordSchema, `/api/requests/${encodeURIComponent(requestId)}`);
   }

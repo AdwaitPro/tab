@@ -12,6 +12,7 @@ import { log } from "../lib/log.js";
 import { buildPayload, encodePayload } from "../lib/payload.js";
 import { requestUrl, splitUrl } from "../lib/refs.js";
 import { readResult } from "../lib/result.js";
+import { bestEffortSetPayer, payAnyAgent } from "../lib/payer.js";
 import { quoteUntrusted, sanitizeText } from "../lib/sanitize.js";
 import { computeSplit, scaleWeight, tipToBps } from "../lib/split.js";
 import { isoSeconds } from "../lib/time.js";
@@ -26,6 +27,7 @@ export const splitInput = z.object({
     label: labelInput.min(1).describe("Who owes, e.g. a first name (≤40 chars)."),
     amount: usdcInput.optional().describe("Custom mode: exact USDC this person owes. Set for all participants or none."),
     weight: z.number().min(0).max(1000).optional().describe("Weighted mode: relative share (e.g. 2 = double). Set for all or none."),
+    payer_address: addressInput.optional().describe("Optional: this person's Base address, so the request shows up in their \"you owe\" list."),
   }).strict()).min(1).max(LIMITS.participants).describe("People who owe (1–20). Do not include the requester here."),
   include_self: z.boolean().default(true).describe("Equal/weighted modes: the requester also takes a share (weight 1) and absorbs rounding. Default true."),
   memo: memoInput.optional().describe("What the bill is for (≤140 chars). Visible to anyone with a link."),
@@ -43,6 +45,7 @@ const personOutput = z.object({
   url: z.string(),
   share_text: z.string(),
   pay_prompt: z.string(),
+  pay_any_agent: z.string(),
 }).strict();
 
 export const splitOutput = z.object({
@@ -71,7 +74,8 @@ export const splitTool = {
     "remainder is the requester's share) or weighted (every participant has weight). Math is exact in USDC base " +
     "units; shares always sum to the total (+ tip), and the requester absorbs rounding. Each link carries a unique " +
     "matching code (< 0.01 USDC) for on-chain proof. Returns per-person links and share text plus a split page. " +
-    "Do not list the requester in participants; use include_self instead. No wallet approval needed.",
+    "Do not list the requester in participants; use include_self instead. No wallet approval needed. " +
+    "If the user names a PayBox @username, resolve it to a Base address with PayBox's resolve_username tool first, then pass the address.",
   annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: true },
 } as const;
 
@@ -84,6 +88,12 @@ export async function split(input: z.infer<typeof splitInput>, ctx: ToolContext)
     const label = sanitizeText(p.label, LIMITS.label);
     if (!label) throw new ToolError(`Participant #${i + 1} needs a label.`);
     return label;
+  });
+  const payerAddresses = input.participants.map((p, i) => {
+    if (!p.payer_address) return undefined;
+    const addr = checksum(p.payer_address, `participants[${i}].payer_address`);
+    if (sameAddress(addr, recipient)) throw new ToolError(`Participant #${i + 1}'s payer_address is the recipient itself.`);
+    return addr;
   });
   const result = computeSplit({
     total,
@@ -120,6 +130,10 @@ export async function split(input: z.infer<typeof splitInput>, ctx: ToolContext)
     response.requests.forEach((record, i) => assertRecordMatches(record, recipient, result.shares[i] ?? 0n));
     splitId = response.split.id;
     people = response.requests.map((r) => ({ id: r.id, unique: BigInt(r.unique_atomic) }));
+    await Promise.all(payerAddresses.map((addr, i) => {
+      const person = people[i];
+      return addr && person ? bestEffortSetPayer(ctx, person.id, addr) : Promise.resolve(false);
+    }));
   } catch (error) {
     if (!(error instanceof NetError) || !error.retryable) throw error;
     log("tab_split", "offline_fallback", { kind: error.kind });
@@ -144,6 +158,7 @@ export async function split(input: z.infer<typeof splitInput>, ctx: ToolContext)
       url,
       share_text: shareText(label, formatUsdcCents(share), memo, url, true),
       pay_prompt: `Pay this Tab: ${url}`,
+      pay_any_agent: payAnyAgent(formatUsdc(person.unique), recipient),
     };
   });
   const tip = result.grandTotal - total;
@@ -170,6 +185,7 @@ export async function split(input: z.infer<typeof splitInput>, ctx: ToolContext)
     memo ? `Memo (user-provided text): ${quoteUntrusted(memo)}` : undefined,
     ...perPerson.map((p) => `• ${p.label} owes ${p.amount} USDC → pays exactly ${p.unique_amount} USDC at ${p.url}`),
     `Your share: ${output.your_share} USDC.`,
+    `Any agent can pay without Tab: send the exact amount shown for that person in USDC on Base to ${recipient}. In PayBox that's request_transfer.`,
     output.split_url ? `Split page: ${output.split_url}` : "Tab server was unreachable: these are offline links (they work, but show as Unverified).",
   ];
   return readResult(output, lines.filter((l): l is string => l !== undefined).join("\n"));

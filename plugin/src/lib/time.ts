@@ -16,7 +16,7 @@ export function isoSeconds(unixSeconds: number | bigint): string {
   return new Date(Number(unixSeconds) * 1000).toISOString().replace(/\.\d{3}Z$/, "Z");
 }
 
-/** "Sun 18 Oct 2026, 21:00 IST" — the demo audience is in India; UTC is always shown alongside. */
+/** "Sun 18 Oct 2026, 21:00 IST": the demo audience is in India; UTC is always shown alongside. */
 export function formatIst(unixSeconds: number | bigint): string {
   const text = new Intl.DateTimeFormat("en-GB", {
     timeZone: "Asia/Kolkata", weekday: "short", day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit", hour12: false,

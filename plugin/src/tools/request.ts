@@ -13,6 +13,7 @@ import { log } from "../lib/log.js";
 import { buildPayload, encodePayload } from "../lib/payload.js";
 import { requestUrl } from "../lib/refs.js";
 import { readResult } from "../lib/result.js";
+import { bestEffortSetPayer, payAnyAgent } from "../lib/payer.js";
 import { quoteUntrusted, sanitizeText } from "../lib/sanitize.js";
 import { isoSeconds } from "../lib/time.js";
 
@@ -21,6 +22,7 @@ export const requestInput = z.object({
   amount: usdcInput.describe('USDC amount as a decimal string, e.g. "2" or "12.50". Max 6 decimals.'),
   memo: memoInput.optional().describe("What it is for (≤140 chars). Visible to anyone with the link."),
   payer_label: labelInput.optional().describe("Who should pay, e.g. a first name (≤40 chars)."),
+  payer_address: addressInput.optional().describe("Optional: the payer's Base address, so the request shows up in their \"you owe\" list."),
   requester_label: labelInput.optional().describe("How the requester is shown, e.g. a first name (≤40 chars)."),
   expires_in_hours: z.number().int().min(1).max(720).default(168).describe("Link lifetime in hours (default 168 = 7 days)."),
 }).strict();
@@ -38,6 +40,7 @@ export const requestOutput = z.object({
   expires_at: z.string(),
   share_text: z.string(),
   pay_prompt: z.string(),
+  pay_any_agent: z.string().describe("Plain-transfer instructions for any wallet or agent without Tab."),
   mode: z.enum(["api", "offline"]),
   next_actions: z.array(z.string()),
 }).strict();
@@ -51,7 +54,8 @@ export const requestTool = {
     "when dividing a bill among several people. The payer opens the link and pays from any wallet, or their agent " +
     "pays it with tab_pay. Tab adds a tiny unique matching code (< 0.01 USDC) to the amount so the payment can be " +
     "proven on-chain. Amounts are decimal USDC strings. Returns the link, share text to send, and a pay prompt " +
-    "for the payer's agent. Creates a record on the Tab server; no wallet approval needed.",
+    "for the payer's agent. Creates a record on the Tab server; no wallet approval needed. " +
+    "If the user names a PayBox @username, resolve it to a Base address with PayBox's resolve_username tool first, then pass the address.",
   annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: true },
 } as const;
 
@@ -77,6 +81,8 @@ export async function request(input: z.infer<typeof requestInput>, ctx: ToolCont
   const memo = sanitizeText(input.memo, LIMITS.memo);
   const payerLabel = sanitizeText(input.payer_label, LIMITS.label);
   const requesterLabel = sanitizeText(input.requester_label, LIMITS.label);
+  const payerAddress = input.payer_address ? checksum(input.payer_address, "payer_address") : undefined;
+  if (payerAddress && sameAddress(payerAddress, recipient)) throw new ToolError("payer_address is the recipient itself.");
   const base = requireApiBase(ctx.config);
   const nowSeconds = Math.floor(ctx.now() / 1000);
   const expiresAt = nowSeconds + input.expires_in_hours * 3600;
@@ -98,6 +104,7 @@ export async function request(input: z.infer<typeof requestInput>, ctx: ToolCont
     assertRecordMatches(record, recipient, amount);
     id = record.id;
     unique = BigInt(record.unique_atomic);
+    if (payerAddress) await bestEffortSetPayer(ctx, id, payerAddress);
   } catch (error) {
     if (!(error instanceof NetError) || !error.retryable) throw error;
     log("tab_request", "offline_fallback", { kind: error.kind });
@@ -128,6 +135,7 @@ export async function request(input: z.infer<typeof requestInput>, ctx: ToolCont
     expires_at: isoSeconds(expiresAt),
     share_text: shareText(payerLabel, cents, memo, url, false),
     pay_prompt: `Pay this Tab: ${url}`,
+    pay_any_agent: payAnyAgent(formatUsdc(unique), recipient),
     mode,
     next_actions: next,
   };
@@ -137,6 +145,7 @@ export async function request(input: z.infer<typeof requestInput>, ctx: ToolCont
     memo ? `Memo (user-provided text): ${quoteUntrusted(memo)}` : undefined,
     `Link: ${url}`,
     `Share text: ${output.share_text}`,
+    output.pay_any_agent,
     `Expires: ${output.expires_at}`,
   ].filter((line): line is string => line !== undefined).join("\n");
   return readResult(output, text);

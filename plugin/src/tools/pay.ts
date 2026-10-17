@@ -5,6 +5,7 @@ import * as z from "zod/v4";
 import { checksum, sameAddress, shortAddress } from "../lib/address.js";
 import { formatUnitsExact, formatUsdc } from "../lib/amount.js";
 import { requireApiBase } from "../lib/config.js";
+import { bestEffortSetPayer } from "../lib/payer.js";
 import { CHAIN, DEPOSIT_URL, EXPLORER_TX, USDC } from "../lib/constants.js";
 import type { ToolContext } from "../lib/context.js";
 import { NetError, ToolError } from "../lib/errors.js";
@@ -36,7 +37,8 @@ export const payTool = {
     "re-reads the request, checks it is unpaid on-chain and not expired, checks the sender's USDC and ETH (gas) " +
     "balance, then returns ONE unsigned proposal: an ERC-20 USDC transfer of the exact amount to the requester. " +
     "It grants no allowance. Show the user the returned explanation before they approve in PayBox. After it " +
-    "confirms, call tab_status with the same link. Not for splits as a whole: pay each person's own request link.",
+    "confirms, call tab_status with the same link. Not for splits as a whole: pay each person's own request link. " +
+    "sender must be the user's own Base address (if they name a PayBox @username, resolve it with PayBox's resolve_username tool first).",
   annotations: { readOnlyHint: false, destructiveHint: true, idempotentHint: false, openWorldHint: true },
 } as const;
 
@@ -83,6 +85,8 @@ export async function pay(input: z.infer<typeof payInput>, ctx: ToolContext): Pr
       `Add a little ETH on Base at ${DEPOSIT_URL}, then call tab_pay again.`);
   }
 
+  // All checks passed: record the payer for their "you owe" list (best effort, metadata only).
+  if (req.source === "api") await bestEffortSetPayer(ctx, req.id, sender);
   const data = transferCalldata(req.recipient, req.uniqueAtomic);
   const proposal = proposeEvm({ chain: CHAIN, to: USDC, value: "0", data });
   const signedText = signature === "valid" ? `Signed by ${req.recipient} (the recipient). Names/labels are unverified.` : req.source === "payload"

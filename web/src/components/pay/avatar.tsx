@@ -1,6 +1,6 @@
 import { cn } from "@/lib/cn";
 
-const PALETTE = ["#1a88f8", "#febe44", "#2cc078", "#ff5a2c", "#8b6cff", "#14b8c4"];
+const PALETTE = ["#1a88f8", "#0f8a4f", "#d9452b", "#7c5cff", "#0e7f8a", "#222222"];
 
 function hash(text: string): number {
   let h = 0;

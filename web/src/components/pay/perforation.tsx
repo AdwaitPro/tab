@@ -1,10 +1,8 @@
-/** Ticket perforation: side notches cut into the card plus a dashed tear line. */
+/** Dashed tear line on the seam between `.ticket-top` and `.ticket-bottom` (their masks cut the notches). */
 export function Perforation() {
   return (
-    <div className="relative my-5 h-6" aria-hidden="true">
-      <span className="absolute top-0 -left-3 size-6 rounded-full bg-bg shadow-[inset_-1px_0_0_var(--line)]" />
-      <span className="absolute top-0 -right-3 size-6 rounded-full bg-bg shadow-[inset_1px_0_0_var(--line)]" />
-      <span className="absolute top-1/2 right-5 left-5 border-t-2 border-dashed border-line-strong" />
+    <div className="relative h-0" aria-hidden="true">
+      <span className="absolute top-0 right-6 left-6 -translate-y-1/2 border-t-2 border-dashed border-line-strong" />
     </div>
   );
 }

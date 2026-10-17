@@ -124,6 +124,11 @@ Body: `{ "hash": "0x<64 hex>", "body": "Logo design, 3 concepts, SVG + PNG" }` (
 Server **must verify** `hash == keccak256(toBytes(body))` (viem `keccak256(stringToBytes(body))`, UTF-8) else `400`.
 Idempotent: same hash again → `200`. New → `201`. Response: `{ "hash": "0x…", "created_at": "…Z" }`.
 
+### `POST /api/requests/:id/payer` (no auth, rate-limited)
+Body `{ "payer_address": "0x…" }`. Fills `payer_address` only when it is still `null`; returns `RequestRecord`.
+The plugin calls it best-effort after `tab_request`/`tab_split` (when a payer address is given) and from `tab_pay`
+once all pre-checks pass. Metadata only; payment truth stays on-chain.
+
 ### `GET /api/requests/:id`
 Response `200`: `RequestRecord`. `404` if unknown. `:id` may also be an offline payload id `p.<base64url>` — the server
 may decode it (see "Offline links") and return a synthesized `RequestRecord` with `id` = the full `p.…` string, or `404`.

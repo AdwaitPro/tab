@@ -35,7 +35,7 @@ function earlier(a: TransferLog, b: TransferLog | undefined): boolean {
 /**
  * PRD §11.3: paid iff a USDC Transfer(to = recipient, value = unique) exists at block ≥ start_block. Scans
  * eth_getLogs in ≤2,000-block chunks, newest first (a recent payment is found fast); a match found on a partial
- * scan is still proof of payment, but "unpaid" is only reported after full coverage — otherwise "checking".
+ * scan is still proof of payment, but "unpaid" is only reported after full coverage; otherwise "checking".
  */
 export async function findPayments(chain: Chain, budget: Budget, recipient: Address, targets: readonly PaymentTarget[],
   reserveMs = RESERVE_MS): Promise<Map<string, PaymentFinding>> {

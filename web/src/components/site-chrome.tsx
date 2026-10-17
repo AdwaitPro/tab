@@ -24,7 +24,7 @@ export function SiteHeader() {
 
 export function PayFooter() {
   return (
-    <footer className="mx-auto mt-auto w-full max-w-[440px] px-4 pt-8 pb-[max(env(safe-area-inset-bottom),24px)] text-center text-[13px] leading-5 text-subtle">
+    <footer className="mx-auto mt-auto w-full max-w-[480px] px-4 pt-8 pb-[max(env(safe-area-inset-bottom),24px)] text-center text-[13px] leading-5 text-subtle">
       Public on Base · Tab never holds your funds
       <br />
       <a href={PAYBOX_APP_URL} target="_blank" rel="noopener noreferrer" className="font-semibold text-muted hover:text-fg">

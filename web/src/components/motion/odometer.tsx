@@ -6,18 +6,34 @@ import { cn } from "@/lib/cn";
 const DIGITS = "0123456789";
 
 /**
- * Odometer: each digit is a 0 to 9 strip that rolls to its value on mount, staggered left to right.
- * Separators render static. Screen readers get the plain value.
+ * Odometer. Server render and first paint show the plain final value (no layout dependency on CSS),
+ * then after mount each digit becomes a clipped 0 to 9 strip that rolls up to its value.
+ * Geometry is inline so a missing or stale stylesheet can never spill the strips.
  */
 export function Odometer({ value, className, delayMs = 120 }: { value: string; className?: string; delayMs?: number }) {
-  const [armed, setArmed] = useState(false);
+  const [phase, setPhase] = useState<"static" | "armed" | "rolled">("static");
   useEffect(() => {
-    const t = requestAnimationFrame(() => setArmed(true));
-    return () => cancelAnimationFrame(t);
-  }, []);
-  let digitIndex = 0;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Mount-time switch to the animated rendering; SSR keeps the static value.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setPhase("armed");
+    let inner = 0;
+    const outer = requestAnimationFrame(() => {
+      inner = requestAnimationFrame(() => setPhase("rolled"));
+    });
+    return () => {
+      cancelAnimationFrame(outer);
+      cancelAnimationFrame(inner);
+    };
+  }, [value]);
+
+  if (phase === "static") {
+    return <span className={cn("tabular inline-block whitespace-nowrap", className)}>{value}</span>;
+  }
+
+  let order = 0;
   return (
-    <span className={cn("odometer tabular inline-flex", className)}>
+    <span className={cn("tabular inline-flex whitespace-nowrap", className)}>
       <span className="sr-only">{value}</span>
       {[...value].map((ch, i) => {
         if (!DIGITS.includes(ch)) {
@@ -28,18 +44,25 @@ export function Odometer({ value, className, delayMs = 120 }: { value: string; c
           );
         }
         const n = Number(ch);
-        const order = digitIndex++;
+        const delay = delayMs + order++ * 70;
         return (
-          <span key={i} className="odometer-cell" aria-hidden="true">
+          <span
+            key={i}
+            aria-hidden="true"
+            style={{ display: "inline-block", height: "1em", lineHeight: 1, overflow: "hidden", verticalAlign: "top" }}
+          >
             <span
-              className="odometer-strip"
               style={{
-                transform: `translate3d(0, ${armed ? -n * 10 : 0}%, 0)`,
-                transitionDelay: `${delayMs + order * 70}ms`,
+                display: "flex",
+                flexDirection: "column",
+                transform: `translate3d(0, ${phase === "rolled" ? -n : 0}em, 0)`,
+                transition: `transform 1100ms cubic-bezier(0.19, 1, 0.22, 1) ${delay}ms`,
               }}
             >
               {DIGITS.split("").map((d) => (
-                <span key={d}>{d}</span>
+                <span key={d} style={{ height: "1em", lineHeight: 1 }}>
+                  {d}
+                </span>
               ))}
             </span>
           </span>

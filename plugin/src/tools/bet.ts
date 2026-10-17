@@ -63,6 +63,7 @@ export const betCreateTool = {
   name: "bet_create",
   title: "Create a friendly bet",
   description:
+    "If the user names a PayBox @username, resolve it to a Base address with PayBox's resolve_username tool first, then pass the address. " +
     "Create a two-person USDC bet escrowed in TabEscrow on Base. kind=price settles trustlessly from Chainlink " +
     "ETH/USD or BTC/USD (call tab_quote first to choose a threshold); kind=event settles when both sides report " +
     "the same winner (conflicts go to the optional arbiter, otherwise both are refunded after 7 days). TWO STEPS, " +
@@ -77,7 +78,7 @@ export const betActionTool = {
   name: "bet_action",
   title: "Act on a bet",
   description:
-    "Act on a TabEscrow bet on Base. join: the opponent locks an equal stake — TWO STEPS: if their USDC allowance " +
+    "Act on a TabEscrow bet on Base. join: the opponent locks an equal stake. TWO STEPS: if their USDC allowance " +
     "is below stake this returns step 1 = approve EXACTLY stake; after it confirms call bet_action join again for " +
     "step 2 = joinBet. settle (anyone, price bets, after resolve time): pays the winner from the Chainlink price; " +
     "pre-checks the oracle and sequencer and tells you when to retry. report (creator/opponent, event bets): " +

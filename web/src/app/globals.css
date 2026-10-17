@@ -10,7 +10,7 @@
   --mesh-a: rgba(26, 136, 248, 0.22);
   --mesh-b: rgba(254, 190, 68, 0.28);
   --mesh-c: rgba(44, 192, 120, 0.14);
-  --blob-opacity: 0.6;
+  --blob-opacity: 0.35;
   --aurora-opacity: 0;
   --surface: #ffffff;
   --surface-2: #f7f6f4;
@@ -29,6 +29,7 @@
   --brand-light: #4dafff;
   --sun: #febe44;
   --sun-soft: #fff4dc;
+  --violet-soft: #f1ecff;
   --success: #138a4b;
   --success-bright: #2cc078;
   --success-soft: #e3f6ea;
@@ -76,6 +77,7 @@
   --brand-light: #8ccbff;
   --sun: #febe44;
   --sun-soft: rgba(254, 190, 68, 0.14);
+  --violet-soft: rgba(124, 92, 255, 0.14);
   --success: #4ad08f;
   --success-bright: #4ad08f;
   --success-soft: rgba(74, 208, 143, 0.14);
@@ -119,6 +121,7 @@
     --brand-light: #8ccbff;
     --sun: #febe44;
     --sun-soft: rgba(254, 190, 68, 0.14);
+    --violet-soft: rgba(124, 92, 255, 0.14);
     --success: #4ad08f;
     --success-bright: #4ad08f;
     --success-soft: rgba(74, 208, 143, 0.14);
@@ -585,21 +588,6 @@ p {
   transition: transform 450ms var(--ease-out);
   will-change: transform;
 }
-.odometer-cell {
-  display: inline-block;
-  height: 1em;
-  overflow: hidden;
-  line-height: 1;
-}
-.odometer-strip {
-  display: flex;
-  flex-direction: column;
-  transition: transform 1100ms var(--ease-out);
-}
-.odometer-strip > span {
-  height: 1em;
-  line-height: 1;
-}
 /* Paid: receipt prints down out of a slot, then the stamp lands */
 @keyframes print-down {
   from {
@@ -653,9 +641,6 @@ p {
   .tilt-card,
   .magnetic {
     transform: none !important;
-  }
-  .odometer-strip {
-    transition: none !important;
   }
   .sheen-sweep::after {
     display: none;
@@ -731,4 +716,43 @@ p {
   .pulse-dot {
     animation: none !important;
   }
+}
+
+/* Ticket: the card itself is transparent; its halves carry the surface and mask out real notches,
+   and drop-shadow follows the cut shape so the background shows through cleanly. */
+.ticket {
+  background: transparent !important;
+  box-shadow: none !important;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.05)) drop-shadow(0 18px 30px rgba(0, 0, 0, 0.1));
+}
+:root[data-theme="dark"] .ticket {
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.12)) drop-shadow(0 18px 30px rgba(0, 0, 0, 0.5));
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .ticket {
+    filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.12)) drop-shadow(0 18px 30px rgba(0, 0, 0, 0.5));
+  }
+}
+.ticket-top,
+.ticket-bottom {
+  background: var(--surface);
+  --notch: 13px;
+}
+.ticket-top {
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
+  -webkit-mask:
+    radial-gradient(circle var(--notch) at 0 100%, transparent 97%, #000 100%) left / 51% 100% no-repeat,
+    radial-gradient(circle var(--notch) at 100% 100%, transparent 97%, #000 100%) right / 51% 100% no-repeat;
+  mask:
+    radial-gradient(circle var(--notch) at 0 100%, transparent 97%, #000 100%) left / 51% 100% no-repeat,
+    radial-gradient(circle var(--notch) at 100% 100%, transparent 97%, #000 100%) right / 51% 100% no-repeat;
+}
+.ticket-bottom {
+  border-radius: 0 0 var(--radius-card) var(--radius-card);
+  -webkit-mask:
+    radial-gradient(circle var(--notch) at 0 0, transparent 97%, #000 100%) left / 51% 100% no-repeat,
+    radial-gradient(circle var(--notch) at 100% 0, transparent 97%, #000 100%) right / 51% 100% no-repeat;
+  mask:
+    radial-gradient(circle var(--notch) at 0 0, transparent 97%, #000 100%) left / 51% 100% no-repeat,
+    radial-gradient(circle var(--notch) at 100% 0, transparent 97%, #000 100%) right / 51% 100% no-repeat;
 }
