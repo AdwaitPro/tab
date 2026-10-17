@@ -1,0 +1,170 @@
+<template>
+  <div id="root" data-composition-id="05-proof" data-width="1920" data-height="1080" data-start="0" data-duration="7.736">
+    <style>
+      @font-face { font-family: "Satoshi"; font-weight: 500; font-style: normal; src: url("assets/fonts/captured-Satoshi_500-s.p.2gbh8zsgu5xby.woff2") format("woff2"); }
+      @font-face { font-family: "Satoshi"; font-weight: 700; font-style: normal; src: url("assets/fonts/captured-Satoshi_700-s.p.19z5sx2nusz2v.woff2") format("woff2"); }
+      @font-face { font-family: "Satoshi"; font-weight: 900; font-style: normal; src: url("assets/fonts/captured-Satoshi_900-s.p.03d7m3bcbsl0m.woff2") format("woff2"); }
+      @font-face { font-family: "Instrument Serif"; font-weight: 400; font-style: italic; src: url("assets/fonts/captured-7ebf22b5a21034f8-s.p.3strvg7o-g5v2.woff2") format("woff2"); }
+      @font-face { font-family: "Geist Mono"; font-weight: 400 600; font-style: normal; src: url("assets/fonts/captured-797e433ab948586e-s.p.1v5bejj26fx9h.woff2") format("woff2"); }
+
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; font-family: "Satoshi", sans-serif; color: #222222; }
+      .\30 5-proof-ground { position: absolute; inset: 0; background:
+          radial-gradient(1100px 700px at 88% 8%, rgba(26, 136, 248, 0.08), rgba(26, 136, 248, 0) 70%),
+          #FBFAF9; }
+      .\30 5-proof-stage { position: absolute; inset: 0; }
+      .\30 5-proof-world { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
+
+      .\30 5-proof-station { position: absolute; display: flex; flex-direction: column; align-items: center; }
+      .\30 5-proof-eyebrow { font-weight: 700; font-size: 22px; letter-spacing: 0.14em; text-transform: uppercase; color: #64625F; margin-bottom: 28px; white-space: nowrap; }
+      .\30 5-proof-eyebrow b { color: #0E74E0; font-weight: 700; }
+
+      /* station 1 · unique amount */
+      #\30 5-proof-s1 { left: 200px; width: 720px; top: 400px; }
+      .\30 5-proof-amount { font-family: "Geist Mono", monospace; font-size: 150px; line-height: 1; letter-spacing: -0.04em; color: #222222; white-space: nowrap; display: flex; }
+      .\30 5-proof-tail { position: relative; color: #1A88F8; }
+      #\30 5-proof-underline { position: absolute; left: 4px; right: 4px; bottom: -18px; height: 8px; border-radius: 8px; background: #1A88F8; transform-origin: 0 50%; }
+
+      /* station 2 · transfer logs */
+      #\30 5-proof-s2 { left: 1320px; width: 560px; top: 330px; }
+      .\30 5-proof-card { width: 560px; border-radius: 24px; background: #FFFFFF; border: 1px solid rgba(14, 116, 224, 0.12);
+        box-shadow: 0 1px 2px rgba(34,34,34,.06), 0 12px 32px rgba(34,34,34,.08), 0 40px 80px rgba(14,116,224,.08); padding: 14px; }
+      .\30 5-proof-row { position: relative; display: flex; align-items: center; justify-content: space-between; height: 76px; padding: 0 22px; border-radius: 14px; }
+      .\30 5-proof-row + .\30 5-proof-row { margin-top: 4px; }
+      .\30 5-proof-row-meta { font-family: "Geist Mono", monospace; font-size: 19px; color: #9A9A9A; letter-spacing: -0.01em; }
+      .\30 5-proof-row-amt { font-family: "Geist Mono", monospace; font-size: 28px; color: #9A9A9A; letter-spacing: -0.02em; }
+      #\30 5-proof-hit-bg { position: absolute; inset: 0; border-radius: 14px; background: rgba(26, 136, 248, 0.08); box-shadow: inset 0 0 0 1.5px rgba(26, 136, 248, 0.45); }
+      #\30 5-proof-hit .\30 5-proof-row-meta, #\30 5-proof-hit .\30 5-proof-row-amt { position: relative; }
+      #\30 5-proof-hit-amt-on, #\30 5-proof-hit-meta-on { position: absolute; right: 22px; top: 0; height: 76px; display: flex; align-items: center; }
+      #\30 5-proof-hit-amt-on { color: #0E74E0; font-family: "Geist Mono", monospace; font-size: 28px; letter-spacing: -0.02em; }
+      #\30 5-proof-hit-meta-on { left: 22px; right: auto; color: #0E74E0; font-family: "Geist Mono", monospace; font-size: 19px; letter-spacing: -0.01em; }
+      #\30 5-proof-db { margin-top: 30px; position: relative; display: inline-flex; align-items: center; height: 44px; padding: 0 22px; border-radius: 100px;
+        border: 1px dashed rgba(100, 98, 95, 0.4); font-family: "Geist Mono", monospace; font-size: 20px; color: #9A9A9A; }
+      #\30 5-proof-strike { position: absolute; left: 14px; right: 14px; top: 50%; height: 2px; margin-top: -1px; background: #64625F; transform-origin: 0 50%; }
+
+      /* station 3 · link pill */
+      #\30 5-proof-s3 { left: 2300px; width: 680px; top: 452px; }
+      .\30 5-proof-pill { display: inline-flex; align-items: center; gap: 22px; height: 92px; padding: 0 30px 0 34px; border-radius: 100px; background: #FFFFFF;
+        border: 1px solid rgba(14, 116, 224, 0.14);
+        box-shadow: 0 1px 2px rgba(34,34,34,.06), 0 12px 32px rgba(34,34,34,.08), 0 40px 80px rgba(14,116,224,.08); white-space: nowrap; }
+      .\30 5-proof-link { font-family: "Geist Mono", monospace; font-size: 30px; color: #222222; letter-spacing: -0.02em; }
+      .\30 5-proof-match { display: inline-flex; align-items: center; gap: 10px; height: 48px; padding: 0 18px 0 14px; border-radius: 100px; background: rgba(26, 136, 248, 0.10);
+        font-weight: 700; font-size: 22px; color: #0E74E0; }
+      #\30 5-proof-dot { width: 14px; height: 14px; border-radius: 50%; background: #1A88F8; box-shadow: 0 0 0 5px rgba(26, 136, 248, 0.18); }
+
+      .\30 5-proof-lines { position: absolute; left: 0; top: 0; width: 3200px; height: 1080px; overflow: visible; }
+      .\30 5-proof-lines path { fill: none; stroke: #1A88F8; stroke-width: 4; stroke-linecap: round; }
+      .\30 5-proof-node { fill: #FBFAF9; stroke: #1A88F8; stroke-width: 4; }
+
+      /* headline */
+      #\30 5-proof-head { position: absolute; left: 0; right: 0; top: 118px; text-align: center; font-weight: 900; font-size: 104px; line-height: 1.04; letter-spacing: -0.035em; color: #222222; white-space: nowrap; }
+      #\30 5-proof-head .\30 5-proof-w { display: inline-block; margin: 0 0.11em; }
+      #\30 5-proof-head .\30 5-proof-serif { font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400; color: #1A88F8; letter-spacing: -0.01em; font-size: 1.12em; }
+    </style>
+
+    <div class="clip 05-proof-ground" data-start="0" data-duration="7.736" data-track-index="0"></div>
+
+    <div class="clip 05-proof-stage" data-start="0" data-duration="7.736" data-track-index="1">
+      <div class="05-proof-world" id="05-proof-world">
+        <svg class="05-proof-lines" viewBox="0 0 3200 1080">
+          <path id="05-proof-l1" d="M 960 540 L 1290 540" pathLength="1" />
+          <path id="05-proof-l2" d="M 1910 540 L 2270 540" pathLength="1" />
+          <circle id="05-proof-n1" class="05-proof-node" cx="960" cy="540" r="9" />
+          <circle id="05-proof-n2" class="05-proof-node" cx="1290" cy="540" r="9" />
+          <circle id="05-proof-n3" class="05-proof-node" cx="1910" cy="540" r="9" />
+          <circle id="05-proof-n4" class="05-proof-node" cx="2270" cy="540" r="9" />
+        </svg>
+
+        <div class="05-proof-station" id="05-proof-s1">
+          <div class="05-proof-eyebrow" id="05-proof-s1-label">Unique <b>amount</b></div>
+          <div class="05-proof-amount" id="05-proof-amount"><span>2.00</span><span class="05-proof-tail" id="05-proof-tail">3324<span id="05-proof-underline"></span></span></div>
+        </div>
+
+        <div class="05-proof-station" id="05-proof-s2">
+          <div class="05-proof-eyebrow" id="05-proof-s2-label">How it matches · Transfer logs on <b>Base</b></div>
+          <div class="05-proof-card" id="05-proof-card">
+            <div class="05-proof-row" id="05-proof-r1"><span class="05-proof-row-meta">Transfer · USDC · Base</span><span class="05-proof-row-amt">· · ·</span></div>
+            <div class="05-proof-row" id="05-proof-hit">
+              <span id="05-proof-hit-bg"></span>
+              <span class="05-proof-row-meta" id="05-proof-hit-meta-off">Transfer · USDC · Base</span>
+              <span class="05-proof-row-amt" id="05-proof-hit-amt-off">2.003324</span>
+              <span id="05-proof-hit-meta-on">Transfer · USDC · Base</span>
+              <span id="05-proof-hit-amt-on">2.003324</span>
+            </div>
+            <div class="05-proof-row" id="05-proof-r3"><span class="05-proof-row-meta">Transfer · USDC · Base</span><span class="05-proof-row-amt">· · ·</span></div>
+          </div>
+          <div id="05-proof-db">database<span id="05-proof-strike"></span></div>
+        </div>
+
+        <div class="05-proof-station" id="05-proof-s3">
+          <div class="05-proof-eyebrow" id="05-proof-s3-label">Payment <b>link</b></div>
+          <div class="05-proof-pill" id="05-proof-pill">
+            <span class="05-proof-link">tab-pay.vercel.app/r/6O1q…</span>
+            <span class="05-proof-match" id="05-proof-match"><span id="05-proof-dot"></span>match rule</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="05-proof-head">
+        <span class="05-proof-w" id="05-proof-h1">The</span><span class="05-proof-w" id="05-proof-h2">chain</span><span class="05-proof-w" id="05-proof-h3">is</span><span class="05-proof-w" id="05-proof-h4">the</span><span class="05-proof-w 05-proof-serif" id="05-proof-h5">receipt</span>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        var D = 7.236;
+        var tl = gsap.timeline({ paused: true });
+        var $ = function (id) { return document.getElementById(id); };
+
+        /* camera: station 1 (center world x 560) with a gentle push */
+        tl.fromTo($("05-proof-world"), { x: 400, y: 0, scale: 1 }, { x: 372, y: -27, scale: 1.05, duration: 2.9, ease: "power1.inOut" }, 0);
+        /* pan right to station 2 (center world x 1600) on "reads Base" */
+        tl.to($("05-proof-world"), { x: -640, y: 0, scale: 1, duration: 1.15, ease: "power3.inOut" }, 2.95);
+        /* pull back to reveal all three stations on "The chain" */
+        tl.to($("05-proof-world"), { x: 12, y: 290, scale: 0.6, duration: 1.5, ease: "expo.out" }, 5.5);
+
+        /* station 1 */
+        tl.fromTo($("05-proof-s1-label"), { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.1);
+        tl.fromTo($("05-proof-amount"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.8, ease: "expo.out" }, 0.2);
+        tl.fromTo($("05-proof-tail"), { opacity: 0.25 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 1.05);
+        tl.fromTo($("05-proof-underline"), { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "expo.out" }, 1.65);
+
+        /* line 1 draws as the camera travels */
+        tl.fromTo($("05-proof-n1"), { opacity: 0 }, { opacity: 1, duration: 0.2 }, 2.6);
+        tl.fromTo($("05-proof-l1"), { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut" }, 2.7);
+        tl.fromTo($("05-proof-n2"), { opacity: 0 }, { opacity: 1, duration: 0.2 }, 3.5);
+
+        /* station 2 */
+        tl.fromTo($("05-proof-s2-label"), { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 3.2);
+        tl.fromTo($("05-proof-card"), { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease: "expo.out" }, 3.15);
+        tl.fromTo([$("05-proof-r1"), $("05-proof-hit"), $("05-proof-r3")], { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.08 }, 3.3);
+        /* the matching row lights up on "logs" */
+        tl.fromTo($("05-proof-hit-bg"), { opacity: 0, scale: 0.97 }, { opacity: 1, scale: 1, duration: 0.5, ease: "power3.out" }, 3.95);
+        tl.fromTo([$("05-proof-hit-amt-on"), $("05-proof-hit-meta-on")], { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 3.95);
+        tl.fromTo([$("05-proof-hit-amt-off"), $("05-proof-hit-meta-off")], { opacity: 1 }, { opacity: 0, duration: 0.4, ease: "power2.out" }, 3.95);
+        /* "not a database" */
+        tl.fromTo($("05-proof-db"), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.45);
+        tl.fromTo($("05-proof-strike"), { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.inOut" }, 4.75);
+        tl.to($("05-proof-db"), { opacity: 0.55, duration: 0.4, ease: "power2.out" }, 5.1);
+
+        /* line 2 + station 3 on "The chain" */
+        tl.fromTo($("05-proof-n3"), { opacity: 0 }, { opacity: 1, duration: 0.2 }, 5.55);
+        tl.fromTo($("05-proof-l2"), { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.7, ease: "power2.inOut" }, 5.6);
+        tl.fromTo($("05-proof-n4"), { opacity: 0 }, { opacity: 1, duration: 0.2 }, 6.2);
+        tl.fromTo($("05-proof-s3-label"), { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 5.95);
+        tl.fromTo($("05-proof-pill"), { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.4)" }, 6.0);
+        tl.fromTo($("05-proof-match"), { opacity: 0, x: -8 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 6.35);
+
+        /* headline lands top-centre on "The chain", "receipt" on its word */
+        tl.fromTo([$("05-proof-h1"), $("05-proof-h2")], { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", stagger: 0.12 }, 5.6);
+        tl.fromTo($("05-proof-h3"), { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 6.15);
+        tl.fromTo($("05-proof-h4"), { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 6.42);
+        tl.fromTo($("05-proof-h5"), { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.8, ease: "expo.out" }, 6.55);
+
+        tl.set({}, {}, D);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["05-proof"] = tl;
+      })();
+    </script>
+  </div>
+</template>

@@ -19,3 +19,8 @@ contracts/broadcast/*/dry-run/
 # Satoshi (Fontshare license): used in the deployed app, not redistributed in this repo
 web/src/fonts/Satoshi-*
 web/assets/fonts/Satoshi-*
+videos/*/renders/
+videos/*/node_modules/
+videos/*/.hyperframes/
+videos/*/capture/
+videos/*/assets/fonts/

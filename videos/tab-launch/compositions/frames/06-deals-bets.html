@@ -1,0 +1,235 @@
+<template>
+  <div id="root" data-composition-id="06-deals-bets" data-start="0" data-duration="11.153" data-width="1920" data-height="1080">
+    <style>
+      @font-face{font-family:satoshi;src:url("assets/fonts/captured-Satoshi_400-s.p.2oultpqxb_gh9.woff2")format("woff2");font-display:block;font-weight:400;font-style:normal}
+      @font-face{font-family:satoshi;src:url("assets/fonts/captured-Satoshi_500-s.p.2gbh8zsgu5xby.woff2")format("woff2");font-display:block;font-weight:500;font-style:normal}
+      @font-face{font-family:satoshi;src:url("assets/fonts/captured-Satoshi_700-s.p.19z5sx2nusz2v.woff2")format("woff2");font-display:block;font-weight:700;font-style:normal}
+      @font-face{font-family:satoshi;src:url("assets/fonts/captured-Satoshi_900-s.p.03d7m3bcbsl0m.woff2")format("woff2");font-display:block;font-weight:900;font-style:normal}
+      @font-face{font-family:"Instrument Serif";src:url("assets/fonts/captured-7ebf22b5a21034f8-s.p.3strvg7o-g5v2.woff2")format("woff2");font-display:block;font-weight:400;font-style:italic}
+      @font-face{font-family:"Geist Mono";src:url("assets/fonts/captured-797e433ab948586e-s.p.1v5bejj26fx9h.woff2")format("woff2");font-display:block;font-weight:100 900;font-style:normal}
+
+      #root{position:relative;width:1920px;height:1080px;overflow:hidden;font-family:satoshi,sans-serif;color:#222222;-webkit-font-smoothing:antialiased}
+
+      .\30 6-deals-bets-ground{position:absolute;inset:0;background:#FBFAF9}
+      .\30 6-deals-bets-glow{position:absolute;width:1100px;height:1100px;border-radius:50%;top:-80px}
+      .\30 6-deals-bets-glow-l{left:-260px;background:radial-gradient(closest-side,rgba(14,116,224,.10),rgba(14,116,224,0))}
+      .\30 6-deals-bets-glow-r{right:-260px;background:radial-gradient(closest-side,rgba(26,136,248,.12),rgba(26,136,248,0))}
+
+      .\30 6-deals-bets-stage{position:absolute;inset:0;transform-origin:960px 500px}
+
+      .\30 6-deals-bets-head{position:absolute;left:150px;top:72px;transform-origin:0 0;display:flex;align-items:baseline;gap:18px;white-space:nowrap}
+      .\30 6-deals-bets-head-word{font-weight:900;font-size:84px;line-height:1;letter-spacing:-.035em;color:#222222}
+      .\30 6-deals-bets-head-accent{display:inline-block;font-family:"Instrument Serif",serif;font-style:italic;font-weight:400;font-size:96px;line-height:1;letter-spacing:-.01em;color:#1A88F8}
+
+      .\30 6-deals-bets-pair{position:absolute;left:0;top:0;width:1920px;height:1080px;perspective:2200px;perspective-origin:960px 500px}
+      .\30 6-deals-bets-card-wrap{position:absolute;top:224px;width:770px;height:566px;transform-style:preserve-3d}
+      .\30 6-deals-bets-wrap-l{left:140px;transform-origin:100% 50%}
+      .\30 6-deals-bets-wrap-r{left:1010px;transform-origin:0% 50%}
+      .\30 6-deals-bets-card{position:absolute;inset:0;background:#FFFFFF;border-radius:28px;padding:52px 56px;box-sizing:border-box}
+      .\30 6-deals-bets-card-l{box-shadow:0 1px 2px rgba(34,34,34,.06),10px 12px 32px rgba(34,34,34,.08),28px 40px 80px rgba(14,116,224,.10)}
+      .\30 6-deals-bets-card-r{box-shadow:0 1px 2px rgba(34,34,34,.06),-10px 12px 32px rgba(34,34,34,.08),-28px 40px 80px rgba(14,116,224,.10)}
+
+      .\30 6-deals-bets-eyebrow{font-weight:700;font-size:20px;letter-spacing:.08em;text-transform:uppercase;color:#0E74E0}
+      .\30 6-deals-bets-title{margin-top:14px;font-weight:900;font-size:80px;line-height:1;letter-spacing:-.035em;color:#222222}
+
+      .\30 6-deals-bets-steps{position:absolute;left:56px;right:56px;top:300px;height:140px}
+      .\30 6-deals-bets-track{position:absolute;left:32px;right:32px;top:30px;height:4px;border-radius:2px;background:rgba(14,116,224,.10)}
+      .\30 6-deals-bets-seg{position:absolute;top:30px;height:4px;border-radius:2px;background:#1A88F8;transform-origin:0 50%}
+      .\30 6-deals-bets-seg-1{left:32px;width:297px}
+      .\30 6-deals-bets-seg-2{left:329px;width:297px}
+      .\30 6-deals-bets-step{position:absolute;top:0;width:64px;display:flex;flex-direction:column;align-items:center}
+      .\30 6-deals-bets-step-1{left:0}
+      .\30 6-deals-bets-step-2{left:297px}
+      .\30 6-deals-bets-step-3{left:594px}
+      .\30 6-deals-bets-dot{width:64px;height:64px;border-radius:50%;background:#0E74E0;color:#FBFAF9;font-weight:700;font-size:26px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 8px #FFFFFF}
+      .\30 6-deals-bets-step-2 .\30 6-deals-bets-dot{background:#1A88F8}
+      .\30 6-deals-bets-step-3 .\30 6-deals-bets-dot{background:#4FA3FA}
+      .\30 6-deals-bets-step-label{margin-top:22px;font-weight:700;font-size:32px;letter-spacing:-.02em;color:#222222;white-space:nowrap}
+      .\30 6-deals-bets-lock-chip{position:absolute;left:152px;top:4px;width:56px;height:56px;border-radius:50%;background:#FFFFFF;box-shadow:0 1px 2px rgba(34,34,34,.08),0 6px 16px rgba(14,116,224,.16);display:flex;align-items:center;justify-content:center}
+
+      .\30 6-deals-bets-stakes{position:absolute;left:56px;right:56px;top:226px;height:80px}
+      .\30 6-deals-bets-chip{position:absolute;top:8px;height:64px;padding:0 26px 0 10px;border-radius:100px;background:rgba(14,116,224,.06);display:flex;align-items:center;gap:14px;font-weight:700;font-size:26px;letter-spacing:-.01em;color:#222222;white-space:nowrap}
+      .\30 6-deals-bets-chip-l{right:calc(50% + 46px)}
+      .\30 6-deals-bets-chip-r{left:calc(50% + 46px)}
+      .\30 6-deals-bets-coin{width:44px;height:44px;border-radius:50%;background:#0E74E0;color:#FBFAF9;font-weight:900;font-size:22px;display:flex;align-items:center;justify-content:center}
+      .\30 6-deals-bets-bigl{position:absolute;left:50%;top:0;margin-left:-40px;width:80px;height:80px;border-radius:50%;background:#0E74E0;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 4px rgba(14,116,224,.2),0 12px 28px rgba(14,116,224,.28)}
+
+      .\30 6-deals-bets-rule{position:absolute;left:56px;right:56px;top:346px;height:1.5px;background:rgba(14,116,224,.14);transform-origin:0 50%}
+      .\30 6-deals-bets-quote{position:absolute;left:56px;right:56px;top:378px}
+      .\30 6-deals-bets-quote-line{display:flex;align-items:baseline;gap:22px;font-family:"Geist Mono",monospace}
+      .\30 6-deals-bets-pairname{font-size:30px;font-weight:500;color:#64625F;letter-spacing:-.01em}
+      .\30 6-deals-bets-price{font-size:72px;font-weight:600;color:#0E74E0;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+      .\30 6-deals-bets-caption{margin-top:12px;font-weight:500;font-size:22px;color:#64625F}
+
+      .\30 6-deals-bets-pill{position:absolute;bottom:-30px;height:60px;padding:0 28px;border-radius:100px;background:#0E74E0;color:#FFFFFF;display:flex;align-items:center;gap:12px;font-weight:700;font-size:23px;letter-spacing:-.005em;white-space:nowrap;box-shadow:0 2px 4px rgba(14,116,224,.18),0 14px 32px rgba(14,116,224,.26)}
+      .\30 6-deals-bets-pill-l{right:-36px;transform-origin:85% 50%}
+      .\30 6-deals-bets-pill-r{left:-36px;transform-origin:15% 50%}
+    </style>
+
+    <div class="clip 06-deals-bets-ground" data-start="0" data-duration="11.153" data-track-index="0">
+      <div class="06-deals-bets-glow 06-deals-bets-glow-l" id="06-deals-bets-glow-l"></div>
+      <div class="06-deals-bets-glow 06-deals-bets-glow-r" id="06-deals-bets-glow-r"></div>
+    </div>
+
+    <div class="clip 06-deals-bets-stage" id="06-deals-bets-stage" data-start="0" data-duration="11.153" data-track-index="1">
+      <div class="06-deals-bets-head" id="06-deals-bets-head">
+        <span class="06-deals-bets-head-word">Past</span>
+        <span class="06-deals-bets-head-accent" id="06-deals-bets-accent">bills</span>
+      </div>
+
+      <div class="06-deals-bets-pair">
+        <div class="06-deals-bets-card-wrap 06-deals-bets-wrap-l" id="06-deals-bets-wrap-l">
+          <div class="06-deals-bets-card 06-deals-bets-card-l" id="06-deals-bets-card-l">
+            <div class="06-deals-bets-eyebrow">Escrow</div>
+            <div class="06-deals-bets-title">Deals</div>
+
+            <div class="06-deals-bets-steps">
+              <div class="06-deals-bets-track"></div>
+              <div class="06-deals-bets-seg 06-deals-bets-seg-1" id="06-deals-bets-seg-1"></div>
+              <div class="06-deals-bets-seg 06-deals-bets-seg-2" id="06-deals-bets-seg-2"></div>
+              <div class="06-deals-bets-step 06-deals-bets-step-1" id="06-deals-bets-step-1">
+                <div class="06-deals-bets-dot">1</div>
+                <div class="06-deals-bets-step-label">Funded</div>
+              </div>
+              <div class="06-deals-bets-step 06-deals-bets-step-2" id="06-deals-bets-step-2">
+                <div class="06-deals-bets-dot">2</div>
+                <div class="06-deals-bets-step-label">Delivered</div>
+              </div>
+              <div class="06-deals-bets-step 06-deals-bets-step-3" id="06-deals-bets-step-3">
+                <div class="06-deals-bets-dot">3</div>
+                <div class="06-deals-bets-step-label">Released</div>
+              </div>
+              <div class="06-deals-bets-lock-chip" id="06-deals-bets-lock-chip">
+                <svg width="26" height="30" viewBox="0 0 26 30" fill="none" aria-hidden="true">
+                  <path d="M6.5 13V8.5a6.5 6.5 0 0 1 13 0V13" stroke="#0E74E0" stroke-width="3" stroke-linecap="round"/>
+                  <rect x="2" y="13" width="22" height="15" rx="4" fill="#0E74E0"/>
+                  <circle cx="13" cy="20.5" r="2.2" fill="#FFFFFF"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="06-deals-bets-pill 06-deals-bets-pill-l" id="06-deals-bets-pill-l">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 14L4 9l5-5" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"/></svg>
+              Refund path if anyone disappears
+            </div>
+          </div>
+        </div>
+
+        <div class="06-deals-bets-card-wrap 06-deals-bets-wrap-r" id="06-deals-bets-wrap-r">
+          <div class="06-deals-bets-card 06-deals-bets-card-r" id="06-deals-bets-card-r">
+            <div class="06-deals-bets-eyebrow">Oracle settled</div>
+            <div class="06-deals-bets-title">Bets</div>
+
+            <div class="06-deals-bets-stakes">
+              <div class="06-deals-bets-chip 06-deals-bets-chip-l" id="06-deals-bets-chip-l"><span class="06-deals-bets-coin">$</span>Stake A</div>
+              <div class="06-deals-bets-chip 06-deals-bets-chip-r" id="06-deals-bets-chip-r"><span class="06-deals-bets-coin">$</span>Stake B</div>
+              <div class="06-deals-bets-bigl" id="06-deals-bets-bigl">
+                <svg width="34" height="40" viewBox="0 0 34 40" fill="none" aria-hidden="true">
+                  <g id="06-deals-bets-shackle"><path d="M8.5 18V11a8.5 8.5 0 0 1 17 0v7" stroke="#FFFFFF" stroke-width="3.6" stroke-linecap="round"/></g>
+                  <rect x="3" y="17" width="28" height="20" rx="5" fill="#FFFFFF"/>
+                  <circle cx="17" cy="27" r="2.8" fill="#0E74E0"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="06-deals-bets-rule" id="06-deals-bets-rule"></div>
+            <div class="06-deals-bets-quote" id="06-deals-bets-quote">
+              <div class="06-deals-bets-quote-line">
+                <span class="06-deals-bets-pairname">ETH / USD</span>
+                <span class="06-deals-bets-price" id="06-deals-bets-price">2,415.33</span>
+              </div>
+              <div class="06-deals-bets-caption" id="06-deals-bets-caption">Chainlink Data Feeds on Base · live tab_quote</div>
+            </div>
+
+            <div class="06-deals-bets-pill 06-deals-bets-pill-r" id="06-deals-bets-pill-r">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.4-3 8-7 9.5-4-1.5-7-5.1-7-9.5V6l7-3z" stroke="#FFFFFF" stroke-width="2.4" stroke-linejoin="round"/><path d="M8.6 12.2l2.4 2.4 4.4-4.6" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              First round after the deadline, proven on chain
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        var FRAME_ID = "06-deals-bets";
+        var DURATION = 10.553;
+        var PRICE = 2415.32958736;
+        var q = function (id) { return document.getElementById(FRAME_ID + "-" + id); };
+
+        var formatPrice = function (value) {
+          var parts = value.toFixed(2).split(".");
+          return parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "." + parts[1];
+        };
+
+        var tl = gsap.timeline({ paused: true });
+
+        tl.fromTo([q("glow-l"), q("glow-r")], { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 2.4, ease: "sine.out" }, 0);
+        tl.fromTo(q("stage"), { scale: 1 }, { scale: 1.035, duration: DURATION - 1.4, ease: "sine.inOut" }, 1.4);
+
+        // Scene 1: headline settles down, then shrinks to an eyebrow before the cards arrive.
+        tl.fromTo(q("head"), { y: -48, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, ease: "power3.out" }, 0.3);
+        tl.fromTo(q("accent"), { y: 22, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" }, 0.86);
+        tl.to(q("head"), { scale: 0.72, duration: 0.9, ease: "power3.inOut" }, 1.45);
+
+        // Scene 2: Deals card opens from the left wing, steps build on the voice.
+        tl.fromTo(q("wrap-l"),
+          { x: -720, rotationY: 30, scale: 0.85, opacity: 0 },
+          { x: 0, rotationY: 7, scale: 1, opacity: 1, duration: 1.15, ease: "expo.out" }, 2.0);
+        tl.fromTo(q("step-1"), { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 2.35);
+        tl.fromTo(q("seg-1"), { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power2.inOut" }, 2.45);
+        tl.fromTo(q("lock-chip"), { scale: 0.5, opacity: 0, y: 10 }, { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.56);
+        tl.fromTo(q("step-2"), { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 2.69);
+        tl.fromTo(q("seg-2"), { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power2.inOut" }, 2.95);
+        tl.fromTo(q("step-3"), { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 3.33);
+        tl.fromTo(q("pill-l"), { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.4)" }, 4.35);
+
+        // Scene 3: Bets card mirrors in from the right wing, stakes lock, live quote lands.
+        tl.fromTo(q("wrap-r"),
+          { x: 720, rotationY: -30, scale: 0.85, opacity: 0 },
+          { x: 0, rotationY: -7, scale: 1, opacity: 1, duration: 1.15, ease: "expo.out" }, 5.29);
+        tl.fromTo(q("chip-l"), { x: -90, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 5.59);
+        tl.fromTo(q("chip-r"), { x: 90, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 5.75);
+        tl.fromTo(q("bigl"), { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 5.89);
+        tl.fromTo(q("shackle"), { y: -7 }, { y: 0, duration: 0.18, ease: "power2.in" }, 6.14);
+        tl.fromTo(q("bigl"), { scale: 1 }, { scale: 1.08, duration: 0.12, ease: "power2.out" }, 6.32);
+        tl.to(q("bigl"), { scale: 1, duration: 0.35, ease: "power2.out" }, 6.44);
+
+        tl.fromTo(q("rule"), { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 6.8);
+        tl.fromTo(q("quote"), { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 6.96);
+        var counter = { value: 0 };
+        tl.fromTo(counter, { value: 0 }, {
+          value: PRICE,
+          duration: 0.8,
+          ease: "power2.out",
+          onUpdate: function () { q("price").textContent = formatPrice(counter.value); }
+        }, 6.96);
+        tl.fromTo(q("caption"), { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 7.42);
+
+        // Scene 4: proof badge punctuates the bets card.
+        tl.fromTo(q("pill-r"), { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.4)" }, 8.4);
+
+        // Idle float lives on the inner card layer so it never fights the wrapper's entry transform.
+        var cardL = q("card-l");
+        var cardR = q("card-r");
+        var idle = { t: 0 };
+        tl.fromTo(idle, { t: 0 }, {
+          t: DURATION,
+          duration: DURATION,
+          ease: "none",
+          onUpdate: function () {
+            var phase = (idle.t / 4.2) * Math.PI * 2;
+            gsap.set(cardL, { y: idle.t > 3.0 ? Math.sin(phase) * 4 * Math.min(1, idle.t - 3.0) : 0 });
+            gsap.set(cardR, { y: idle.t > 6.3 ? Math.sin(phase + Math.PI) * 4 * Math.min(1, idle.t - 6.3) : 0 });
+          }
+        }, 0);
+
+        tl.set({}, {}, DURATION);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines[FRAME_ID] = tl;
+      })();
+    </script>
+  </div>
+</template>

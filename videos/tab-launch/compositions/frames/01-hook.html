@@ -1,0 +1,109 @@
+<template>
+  <div id="root" data-composition-id="01-hook" data-start="0" data-duration="3.744" data-width="1920" data-height="1080">
+    <style>
+      @font-face{font-family:satoshi;src:url("assets/fonts/captured-Satoshi_500-s.p.2gbh8zsgu5xby.woff2")format("woff2");font-display:block;font-weight:500;font-style:normal}
+      @font-face{font-family:satoshi;src:url("assets/fonts/captured-Satoshi_700-s.p.19z5sx2nusz2v.woff2")format("woff2");font-display:block;font-weight:700;font-style:normal}
+      @font-face{font-family:satoshi;src:url("assets/fonts/captured-Satoshi_900-s.p.03d7m3bcbsl0m.woff2")format("woff2");font-display:block;font-weight:900;font-style:normal}
+      @font-face{font-family:"Instrument Serif";src:url("assets/fonts/captured-7ebf22b5a21034f8-s.p.3strvg7o-g5v2.woff2")format("woff2");font-display:block;font-weight:400;font-style:italic}
+      @font-face{font-family:"Geist Mono";src:url("assets/fonts/captured-797e433ab948586e-s.p.1v5bejj26fx9h.woff2")format("woff2");font-display:block;font-weight:100 900;font-style:normal}
+
+      #root{position:relative;width:1920px;height:1080px;overflow:hidden;font-family:satoshi,sans-serif;color:#222222}
+
+      .\30 1-hook-ground{position:absolute;inset:0;background:
+        radial-gradient(1100px 760px at 100% 0%,rgba(26,136,248,.10),rgba(26,136,248,0) 70%),
+        radial-gradient(900px 600px at 0% 100%,rgba(254,190,68,.05),rgba(254,190,68,0) 70%),
+        #FBFAF9}
+
+      .\30 1-hook-stage{position:absolute;inset:0;transform-origin:160px 220px}
+
+      .\30 1-hook-tickers{position:absolute;left:820px;top:132px;display:flex;gap:22px;opacity:.5}
+      .\30 1-hook-chip{font-family:"Geist Mono",monospace;font-size:22px;font-weight:500;letter-spacing:.08em;color:#0E74E0;
+        padding:10px 20px;border-radius:100px;background:rgba(14,116,224,.06);border:1.5px solid rgba(14,116,224,.18)}
+
+      .\30 1-hook-line1{position:absolute;left:160px;top:190px;margin:0;font-weight:900;font-size:176px;line-height:1;
+        letter-spacing:-.035em;color:#222222;white-space:nowrap}
+
+      .\30 1-hook-line2{position:absolute;left:164px;top:458px;width:1180px;margin:0;font-weight:700;font-size:112px;
+        line-height:1.08;letter-spacing:-.035em;color:#222222}
+      .\30 1-hook-w{display:inline-block;margin-right:.24em}
+      .\30 1-hook-serif{font-family:"Instrument Serif",serif;font-style:italic;font-weight:400;color:#1A88F8;
+        letter-spacing:-.01em;font-size:1.14em;line-height:.9}
+
+      .\30 1-hook-receipt{position:absolute;left:1452px;top:430px;width:300px;height:400px}
+      .\30 1-hook-strip{position:absolute;top:0;height:400px;overflow:hidden;
+        filter:drop-shadow(0 1px 2px rgba(34,34,34,.06)) drop-shadow(0 12px 24px rgba(34,34,34,.08)) drop-shadow(0 30px 60px rgba(14,116,224,.08))}
+      .\30 1-hook-paper{position:absolute;top:0;width:300px;height:400px;background:#FFFFFF;
+        clip-path:polygon(0 0,100% 0,100% 94%,94% 100%,88% 94%,82% 100%,76% 94%,70% 100%,64% 94%,58% 100%,52% 94%,46% 100%,40% 94%,34% 100%,28% 94%,22% 100%,16% 94%,10% 100%,4% 94%,0 100%)}
+      .\30 1-hook-paper-in{position:absolute;inset:34px 30px auto 30px}
+      .\30 1-hook-rule{height:10px;border-radius:6px;background:rgba(34,34,34,.09);margin-bottom:18px}
+      .\30 1-hook-dash{border-top:2px dashed rgba(34,34,34,.14);margin:26px 0 22px}
+      .\30 1-hook-total{display:flex;justify-content:space-between;align-items:baseline;font-family:"Geist Mono",monospace;color:#222222}
+      .\30 1-hook-total span:first-child{font-size:20px;color:#64625F;letter-spacing:.06em}
+      .\30 1-hook-total span:last-child{font-size:46px;font-weight:600;letter-spacing:-.02em}
+    </style>
+
+    <div class="clip 01-hook-ground" data-start="0" data-duration="3.744" data-track-index="0"></div>
+
+    <div id="01-hook-stage" class="clip 01-hook-stage" data-start="0" data-duration="3.744" data-track-index="1">
+      <div id="01-hook-tickers" class="01-hook-tickers">
+        <span class="01-hook-chip">ETH</span>
+        <span class="01-hook-chip">SWAP</span>
+        <span class="01-hook-chip">BUY</span>
+      </div>
+
+      <h1 id="01-hook-line1" class="01-hook-line1">Agents can trade.</h1>
+
+      <p id="01-hook-line2" class="01-hook-line2">
+        <span id="01-hook-w1" class="01-hook-w">They</span><span id="01-hook-w2" class="01-hook-w">still</span><span id="01-hook-w3" class="01-hook-w">can't</span><span id="01-hook-w4" class="01-hook-w">split</span><span id="01-hook-w5" class="01-hook-w">a</span><span id="01-hook-w6" class="01-hook-w 01-hook-serif">dinner</span><span id="01-hook-w7" class="01-hook-w 01-hook-serif">bill</span>
+      </p>
+
+      <div id="01-hook-receipt" class="01-hook-receipt">
+        <div id="01-hook-s1" class="01-hook-strip" style="left:0;width:104px;clip-path:polygon(0 0,100% 0,96% 18%,102% 33%,95% 52%,101% 70%,94% 86%,100% 100%,0 100%)">
+          <div class="01-hook-paper" style="left:0"><div class="01-hook-paper-in"><div class="01-hook-rule" style="width:62%"></div><div class="01-hook-rule" style="width:84%"></div><div class="01-hook-rule" style="width:70%"></div><div class="01-hook-rule" style="width:78%"></div><div class="01-hook-dash"></div><div class="01-hook-total"><span>TOTAL</span><span>6.00</span></div></div></div>
+        </div>
+        <div id="01-hook-s2" class="01-hook-strip" style="left:100px;width:96px;clip-path:polygon(4% 0,97% 0,103% 16%,96% 37%,102% 55%,95% 74%,101% 90%,97% 100%,3% 100%,-2% 86%,5% 70%,-1% 52%,6% 33%,0 18%)">
+          <div class="01-hook-paper" style="left:-100px"><div class="01-hook-paper-in"><div class="01-hook-rule" style="width:62%"></div><div class="01-hook-rule" style="width:84%"></div><div class="01-hook-rule" style="width:70%"></div><div class="01-hook-rule" style="width:78%"></div><div class="01-hook-dash"></div><div class="01-hook-total"><span>TOTAL</span><span>6.00</span></div></div></div>
+        </div>
+        <div id="01-hook-s3" class="01-hook-strip" style="left:193px;width:107px;clip-path:polygon(3% 0,100% 0,100% 100%,3% 100%,-1% 90%,4% 74%,-2% 55%,5% 37%,-3% 16%)">
+          <div class="01-hook-paper" style="left:-193px"><div class="01-hook-paper-in"><div class="01-hook-rule" style="width:62%"></div><div class="01-hook-rule" style="width:84%"></div><div class="01-hook-rule" style="width:70%"></div><div class="01-hook-rule" style="width:78%"></div><div class="01-hook-dash"></div><div class="01-hook-total"><span>TOTAL</span><span>6.00</span></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        var DURATION = 3.344;
+        var q = function (id) { return document.getElementById("01-hook-" + id); };
+        var tl = gsap.timeline({ paused: true });
+
+        // Frame 0 is the thumbnail: line 1 is fully set from t=0, only the camera moves.
+        tl.fromTo(q("stage"), { scale: 1 }, { scale: 1.04, duration: DURATION, ease: "expo.out" }, 0);
+        tl.fromTo(q("tickers"), { x: 0 }, { x: -70, duration: DURATION, ease: "none" }, 0);
+
+        tl.fromTo(q("line1"), { opacity: 1 }, { opacity: 0.35, duration: 0.4, ease: "power2.out" }, 1.66);
+        tl.fromTo(q("tickers"), { opacity: 0.5 }, { opacity: 0.2, duration: 0.4, ease: "power2.out" }, 1.66);
+
+        var cues = [1.66, 1.79, 2.05, 2.30, 2.56, 2.65, 2.90];
+        cues.forEach(function (t, i) {
+          tl.fromTo(q("w" + (i + 1)),
+            { opacity: 0, y: 46, filter: "blur(10px)" },
+            { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.3, ease: "power3.out" }, t);
+        });
+
+        tl.fromTo(q("receipt"),
+          { opacity: 0, x: 220, rotation: 6 },
+          { opacity: 1, x: 0, rotation: -3, duration: 0.42, ease: "expo.out" }, 2.65);
+
+        var tearAt = 3.06;
+        tl.fromTo(q("s1"), { x: 0, y: 0, rotation: 0 }, { x: -26, y: 14, rotation: -7, duration: 0.28, ease: "power3.out" }, tearAt);
+        tl.fromTo(q("s2"), { x: 0, y: 0, rotation: 0 }, { x: 2, y: -8, rotation: 2.5, duration: 0.28, ease: "power3.out" }, tearAt + 0.02);
+        tl.fromTo(q("s3"), { x: 0, y: 0, rotation: 0 }, { x: 30, y: 22, rotation: 8, duration: 0.28, ease: "power3.out" }, tearAt + 0.01);
+
+        tl.set({}, {}, DURATION);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["01-hook"] = tl;
+      })();
+    </script>
+  </div>
+</template>

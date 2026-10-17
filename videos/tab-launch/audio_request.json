@@ -1,0 +1,65 @@
+{
+  "lines": [
+    {
+      "id": "01",
+      "sfx": [
+        "soft whoosh"
+      ]
+    },
+    {
+      "id": "02",
+      "sfx": [
+        "coin chime"
+      ]
+    },
+    {
+      "id": "03",
+      "sfx": [
+        "keyboard typing",
+        "soft pop"
+      ]
+    },
+    {
+      "id": "04",
+      "sfx": [
+        "soft whoosh"
+      ]
+    },
+    {
+      "id": "05",
+      "sfx": [
+        "soft tick"
+      ]
+    },
+    {
+      "id": "06",
+      "sfx": [
+        "soft pop",
+        "lock click"
+      ]
+    },
+    {
+      "id": "07",
+      "sfx": [
+        "ui click",
+        "soft tick",
+        "chime"
+      ]
+    },
+    {
+      "id": "08",
+      "sfx": [
+        "soft pop"
+      ]
+    },
+    {
+      "id": "09",
+      "sfx": [
+        "coin chime"
+      ]
+    }
+  ],
+  "bgm": {
+    "mode": "none"
+  }
+}

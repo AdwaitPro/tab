@@ -1,0 +1,451 @@
+<template>
+  <div id="root" data-composition-id="09-close" data-start="0" data-duration="6.6" data-width="1920" data-height="1080">
+    <style>
+      @font-face { font-family: "Satoshi"; font-weight: 500; font-style: normal; src: url("assets/fonts/captured-Satoshi_500-s.p.2gbh8zsgu5xby.woff2") format("woff2"); }
+      @font-face { font-family: "Satoshi"; font-weight: 700; font-style: normal; src: url("assets/fonts/captured-Satoshi_700-s.p.19z5sx2nusz2v.woff2") format("woff2"); }
+      @font-face { font-family: "Satoshi"; font-weight: 900; font-style: normal; src: url("assets/fonts/captured-Satoshi_900-s.p.03d7m3bcbsl0m.woff2") format("woff2"); }
+      @font-face { font-family: "Instrument Serif"; font-weight: 400; font-style: italic; src: url("assets/fonts/captured-7ebf22b5a21034f8-s.p.3strvg7o-g5v2.woff2") format("woff2"); }
+      @font-face { font-family: "Geist Mono"; font-weight: 400 600; font-style: normal; src: url("assets/fonts/captured-797e433ab948586e-s.p.1v5bejj26fx9h.woff2") format("woff2"); }
+
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        font-family: "Satoshi", sans-serif;
+        color: #222222;
+      }
+      #root .clip { position: absolute; inset: 0; }
+
+      .\30 9-close-ground {
+        background:
+          radial-gradient(ellipse 900px 520px at 50% 22%, rgba(26, 136, 248, 0.085), rgba(26, 136, 248, 0) 70%),
+          radial-gradient(ellipse 700px 500px at 100% 0%, rgba(26, 136, 248, 0.05), rgba(26, 136, 248, 0) 70%),
+          #FBFAF9;
+      }
+      .\30 9-close-ring {
+        position: absolute;
+        left: 960px;
+        top: 248px;
+        border-radius: 50%;
+        border: 1.5px solid rgba(26, 136, 248, 0.10);
+      }
+      .\30 9-close-pulse {
+        position: absolute;
+        left: 820px;
+        top: 108px;
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        border: 2px solid rgba(26, 136, 248, 0.45);
+        opacity: 0;
+      }
+      .\30 9-close-shadow {
+        position: absolute;
+        left: 860px;
+        top: 372px;
+        width: 200px;
+        height: 28px;
+        border-radius: 50%;
+        background: radial-gradient(ellipse at center, rgba(14, 116, 224, 0.22), rgba(14, 116, 224, 0) 70%);
+        opacity: 0;
+      }
+      .\30 9-close-link {
+        position: absolute;
+        top: 0;
+        width: 1920px;
+        height: 520px;
+      }
+      .\30 9-close-link svg { position: absolute; left: 0; top: 0; }
+
+      #\30 9-close-three {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1920px;
+        height: 1080px;
+      }
+
+      .\30 9-close-avatar {
+        position: absolute;
+        width: 56px;
+        height: 56px;
+        margin: -28px 0 0 -28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 24px;
+        color: #ffffff;
+        box-shadow: 0 1px 2px rgba(34, 34, 34, 0.08), 0 8px 20px rgba(14, 116, 224, 0.18);
+        border: 3px solid #FBFAF9;
+      }
+      .\30 9-close-avatar-a { left: 517px; top: 374px; background: #1A88F8; }
+      .\30 9-close-avatar-m { left: 1403px; top: 374px; background: #0F8F8A; }
+
+      .\30 9-close-lockup {
+        position: absolute;
+        left: 0;
+        top: 420px;
+        width: 1920px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 22px;
+      }
+      .\30 9-close-mark {
+        width: 84px;
+        height: 84px;
+        filter: drop-shadow(0 10px 22px rgba(14, 116, 224, 0.28));
+      }
+      .\30 9-close-word {
+        font-weight: 900;
+        font-size: 92px;
+        line-height: 1;
+        letter-spacing: -0.04em;
+        color: #222222;
+      }
+
+      .\30 9-close-line {
+        position: absolute;
+        left: 0;
+        top: 542px;
+        width: 1920px;
+        text-align: center;
+        font-weight: 900;
+        font-size: 88px;
+        line-height: 1.1;
+        letter-spacing: -0.035em;
+        color: #222222;
+        white-space: nowrap;
+      }
+      .\30 9-close-w { display: inline-block; margin: 0 0.12em; }
+      .\30 9-close-serif {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-weight: 400;
+        font-size: 1.12em;
+        letter-spacing: -0.01em;
+        color: #1A88F8;
+      }
+
+      .\30 9-close-built-row {
+        position: absolute;
+        left: 0;
+        top: 676px;
+        width: 1920px;
+        display: flex;
+        justify-content: center;
+      }
+      .\30 9-close-built {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        height: 46px;
+        padding: 0 22px 0 18px;
+        border-radius: 100px;
+        background: rgba(26, 136, 248, 0.06);
+        border: 1.5px solid rgba(26, 136, 248, 0.20);
+        font-weight: 500;
+        font-size: 22px;
+        color: #64625F;
+      }
+      .\30 9-close-built b { font-weight: 700; color: #222222; }
+      .\30 9-close-dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: #1A88F8;
+        box-shadow: 0 0 0 4px rgba(26, 136, 248, 0.16);
+      }
+
+      .\30 9-close-urls {
+        position: absolute;
+        left: 0;
+        top: 754px;
+        width: 1920px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+      .\30 9-close-url {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        height: 72px;
+        padding: 0 30px;
+        border-radius: 100px;
+        font-family: "Geist Mono", monospace;
+        font-size: 28px;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+      }
+      .\30 9-close-url-primary {
+        background: #0E74E0;
+        color: #ffffff;
+        box-shadow: 0 1px 2px rgba(34, 34, 34, 0.06), 0 12px 32px rgba(14, 116, 224, 0.28), 0 40px 80px rgba(14, 116, 224, 0.14);
+      }
+      .\30 9-close-url-muted {
+        background: #ffffff;
+        color: #64625F;
+        border: 1.5px solid rgba(34, 34, 34, 0.08);
+        box-shadow: 0 1px 2px rgba(34, 34, 34, 0.06), 0 12px 32px rgba(34, 34, 34, 0.06);
+      }
+      .\30 9-close-url svg { width: 22px; height: 22px; }
+    </style>
+
+    <div class="clip 09-close-ground" data-start="0" data-duration="6.6" data-track-index="0">
+      <div class="09-close-ring" style="width:420px;height:420px;margin:-210px 0 0 -210px;"></div>
+      <div class="09-close-ring" style="width:720px;height:720px;margin:-360px 0 0 -360px;border-color:rgba(26,136,248,0.07);"></div>
+      <div class="09-close-ring" style="width:1080px;height:1080px;margin:-540px 0 0 -540px;border-color:rgba(26,136,248,0.045);"></div>
+    </div>
+
+    <div class="clip" data-start="0" data-duration="6.6" data-track-index="1">
+      <div class="09-close-link" id="09-close-link-l">
+        <svg width="1920" height="520" viewBox="0 0 1920 520" fill="none">
+          <path d="M600 262 Q 710 200 818 240" stroke="#1A88F8" stroke-opacity="0.55" stroke-width="3" stroke-linecap="round" stroke-dasharray="0.1 13"></path>
+        </svg>
+      </div>
+      <div class="09-close-link" id="09-close-link-r">
+        <svg width="1920" height="520" viewBox="0 0 1920 520" fill="none">
+          <path d="M1320 262 Q 1210 200 1102 240" stroke="#1A88F8" stroke-opacity="0.55" stroke-width="3" stroke-linecap="round" stroke-dasharray="0.1 13"></path>
+        </svg>
+      </div>
+      <div class="09-close-shadow" id="09-close-shadow"></div>
+      <div class="09-close-pulse" id="09-close-pulse"></div>
+    </div>
+
+    <div class="clip" data-start="0" data-duration="6.6" data-track-index="2">
+      <canvas id="09-close-three" width="1920" height="1080"></canvas>
+    </div>
+
+    <div class="clip" data-start="0" data-duration="6.6" data-track-index="3">
+      <div class="09-close-avatar 09-close-avatar-a" id="09-close-av-a">A</div>
+      <div class="09-close-avatar 09-close-avatar-m" id="09-close-av-m">M</div>
+
+      <div class="09-close-lockup">
+        <svg class="09-close-mark" id="09-close-mark" viewBox="0 0 32 32" aria-hidden="true">
+          <defs>
+            <linearGradient id="09-close-mark-g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#4DAFFF"></stop>
+              <stop offset="1" stop-color="#0E74E0"></stop>
+            </linearGradient>
+          </defs>
+          <rect x="2" y="2" width="28" height="28" rx="9" fill="url(#09-close-mark-g)"></rect>
+          <path d="M2 13.5a2.5 2.5 0 0 0 0 5" fill="#FBFAF9"></path>
+          <path d="M30 13.5a2.5 2.5 0 0 1 0 5" fill="#FBFAF9"></path>
+          <path d="M10.5 11h11M16 11v11" stroke="#fff" stroke-width="3.2" stroke-linecap="round"></path>
+          <rect x="2" y="2" width="28" height="14" rx="9" fill="#fff" opacity="0.14"></rect>
+        </svg>
+        <div class="09-close-word" id="09-close-word">Tab</div>
+      </div>
+
+      <div class="09-close-line">
+        <span class="09-close-w" id="09-close-w1">Multiplayer</span><span class="09-close-w 09-close-serif" id="09-close-w2">money</span><span class="09-close-w" id="09-close-w3">for</span><span class="09-close-w" id="09-close-w4">agents</span>
+      </div>
+
+      <div class="09-close-built-row">
+        <div class="09-close-built" id="09-close-built"><span class="09-close-dot"></span><span>Built on <b>PayBox</b></span></div>
+      </div>
+
+      <div class="09-close-urls">
+        <div class="09-close-url 09-close-url-primary" id="09-close-url-1">
+          <span>tab-pay.vercel.app</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg>
+        </div>
+        <div class="09-close-url 09-close-url-muted" id="09-close-url-2">
+          <span>github.com/AdwaitPro/tab</span>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+    <script>
+      (function () {
+        var FRAME_ID = "09-close";
+        var DURATION = 6.6;
+        var q = function (id) { return document.getElementById(FRAME_ID + "-" + id); };
+
+        window.__timelines = window.__timelines || {};
+        var tl = gsap.timeline({ paused: true });
+        window.__timelines[FRAME_ID] = tl;
+
+        var clamp01 = function (v) { return v < 0 ? 0 : v > 1 ? 1 : v; };
+        var easeOutCubic = function (v) { return 1 - Math.pow(1 - v, 3); };
+        var easeOutQuart = function (v) { return 1 - Math.pow(1 - v, 4); };
+        var easeOutExpo = function (v) { return v >= 1 ? 1 : 1 - Math.pow(2, -10 * v); };
+
+        var renderAt = function () {};
+
+        var W = 1920;
+        var H = 1080;
+
+        function drawCoinFace() {
+          const size = 1024;
+          const c = document.createElement("canvas");
+          c.width = size;
+          c.height = size;
+          const g = c.getContext("2d");
+          const r = size / 2;
+
+          const disc = g.createRadialGradient(r * 0.72, r * 0.62, r * 0.05, r, r, r);
+          disc.addColorStop(0, "#FFF3D2");
+          disc.addColorStop(0.45, "#F1D38C");
+          disc.addColorStop(0.85, "#D9AE57");
+          disc.addColorStop(1, "#B98A35");
+          g.fillStyle = disc;
+          g.fillRect(0, 0, size, size);
+
+          g.lineWidth = 14;
+          g.strokeStyle = "rgba(150, 105, 35, 0.55)";
+          g.beginPath();
+          g.arc(r, r, r * 0.84, 0, Math.PI * 2);
+          g.stroke();
+          g.lineWidth = 6;
+          g.strokeStyle = "rgba(255, 248, 228, 0.85)";
+          g.beginPath();
+          g.arc(r - 3, r - 4, r * 0.865, 0, Math.PI * 2);
+          g.stroke();
+
+          g.textAlign = "center";
+          g.textBaseline = "middle";
+          g.font = "900 600px sans-serif";
+          const cy = r + 20;
+          g.fillStyle = "rgba(120, 80, 20, 0.55)";
+          g.fillText("$", r + 12, cy + 14);
+          g.fillStyle = "rgba(255, 250, 235, 0.95)";
+          g.fillText("$", r - 6, cy - 7);
+          const glyph = g.createLinearGradient(0, r * 0.3, 0, r * 1.7);
+          glyph.addColorStop(0, "#EBC874");
+          glyph.addColorStop(1, "#C08A33");
+          g.fillStyle = glyph;
+          g.fillText("$", r, cy);
+
+          const tex = new THREE.CanvasTexture(c);
+          tex.colorSpace = THREE.SRGBColorSpace;
+          tex.anisotropy = 8;
+          return tex;
+        }
+
+        function buildCoinScene(canvas) {
+          const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, preserveDrawingBuffer: true });
+          renderer.setPixelRatio(1);
+          renderer.setSize(W, H, false);
+          renderer.outputColorSpace = THREE.SRGBColorSpace;
+          renderer.toneMapping = THREE.ACESFilmicToneMapping;
+          renderer.toneMappingExposure = 1.1;
+          renderer.setClearColor(0x000000, 0);
+
+          const scene = new THREE.Scene();
+          const camera = new THREE.PerspectiveCamera(30, W / H, 0.1, 100);
+          camera.position.set(0, 0, 10);
+
+          scene.add(new THREE.HemisphereLight(0xffffff, 0xdbe9ff, 1.2));
+          const key = new THREE.DirectionalLight(0xffffff, 2.2);
+          key.position.set(-4, 5, 6);
+          scene.add(key);
+          const rim = new THREE.DirectionalLight(0x1a88f8, 1.5);
+          rim.position.set(4, 2, -5);
+          scene.add(rim);
+
+          const coinGeo = new THREE.CylinderGeometry(1, 1, 0.16, 96);
+          // Face the +y cap to camera, then roll 90deg so the "$" reads upright and unmirrored.
+          coinGeo.rotateX(Math.PI / 2);
+          coinGeo.rotateZ(Math.PI / 2);
+          const faceTex = drawCoinFace();
+          const edgeMat = new THREE.MeshStandardMaterial({ color: 0xe8c877, metalness: 0.9, roughness: 0.28 });
+          const faceMat = new THREE.MeshStandardMaterial({ map: faceTex, metalness: 0.35, roughness: 0.32 });
+          const coinMesh = new THREE.Mesh(coinGeo, [edgeMat, faceMat, faceMat]);
+          const coin = new THREE.Group();
+          coin.add(coinMesh);
+          scene.add(coin);
+
+          const nodeGeo = new THREE.SphereGeometry(0.55, 64, 48);
+          const makeNode = () => {
+            const mat = new THREE.MeshPhysicalMaterial({
+              color: 0x1a88f8,
+              clearcoat: 1,
+              clearcoatRoughness: 0.08,
+              roughness: 0.15,
+              metalness: 0.1,
+              emissive: 0x1a88f8,
+              emissiveIntensity: 0.12,
+              transparent: true,
+            });
+            const mesh = new THREE.Mesh(nodeGeo, mat);
+            scene.add(mesh);
+            return mesh;
+          };
+          const nodeA = makeNode();
+          const nodeM = makeNode();
+
+          return { renderer, scene, camera, coin, nodeA, nodeM };
+        }
+
+        if (typeof THREE !== "undefined") {
+          var three = buildCoinScene(q("three"));
+          var renderer = three.renderer, scene = three.scene, camera = three.camera, coin = three.coin;
+          var nodeL = three.nodeA, nodeR = three.nodeM;
+          coin.scale.setScalar(0.62);
+          nodeL.position.set(-2.2, 1.35, 0);
+          nodeR.position.set(2.2, 1.35, 0);
+
+          var COIN_END = new THREE.Vector3(0, 1.45, 0);
+          var COIN_START = new THREE.Vector3(-6.4, 4.4, 1.2);
+          var LAND = 1.3;
+
+          renderAt = function (t) {
+            var n = easeOutCubic(clamp01(t / 0.7));
+            var ns = 0.6 * n;
+            nodeL.scale.setScalar(Math.max(ns, 0.0001));
+            nodeR.scale.setScalar(Math.max(ns, 0.0001));
+
+            var p = clamp01(t / LAND);
+            var e = easeOutExpo(p);
+            var arc = Math.sin(Math.PI * e) * 0.9;
+            coin.position.set(
+              COIN_START.x + (COIN_END.x - COIN_START.x) * e,
+              COIN_START.y + (COIN_END.y - COIN_START.y) * e + arc,
+              COIN_START.z + (COIN_END.z - COIN_START.z) * e
+            );
+            var s = 1 - easeOutQuart(p);
+            coin.rotation.y = -s * Math.PI * 6;
+            coin.rotation.x = s * 0.55;
+            coin.rotation.z = s * 0.35;
+            renderer.render(scene, camera);
+          };
+        }
+
+        var st = { t: 0 };
+        tl.to(st, { t: DURATION, duration: DURATION, ease: "none", onUpdate: function () { renderAt(st.t); } }, 0);
+
+        // Scene 1: nodes present, coin lands, on "Tab" the lockup arrives under it.
+        tl.fromTo([q("av-a"), q("av-m")], { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: "power3.out", stagger: 0.08 }, 0.15);
+        tl.fromTo(q("mark"), { y: 26, scale: 0.86, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.8, ease: "expo.out" }, 0.2);
+        tl.fromTo(q("word"), { x: -18, opacity: 0, filter: "blur(8px)" }, { x: 0, opacity: 1, filter: "blur(0px)", duration: 0.8, ease: "expo.out" }, 0.3);
+        tl.fromTo(q("link-l"), { clipPath: "inset(0px 1320px 0px 600px)" }, { clipPath: "inset(0px 1102px 0px 600px)", duration: 0.7, ease: "power3.out" }, 0.75);
+        tl.fromTo(q("link-r"), { clipPath: "inset(0px 600px 0px 1320px)" }, { clipPath: "inset(0px 600px 0px 818px)", duration: 0.7, ease: "power3.out" }, 0.75);
+        tl.fromTo(q("shadow"), { opacity: 0, scaleX: 0.5 }, { opacity: 1, scaleX: 1, duration: 0.6, ease: "power2.out" }, 0.95);
+        tl.fromTo(q("pulse"), { scale: 0.85, opacity: 0.7 }, { scale: 1.9, opacity: 0, duration: 0.9, ease: "expo.out" }, 1.22);
+
+        // Scene 2: the line builds word by word on the voice.
+        var words = [["w1", 1.12], ["w2", 1.76], ["w3", 1.97], ["w4", 2.1]];
+        words.forEach(function (w) {
+          tl.fromTo(q(w[0]), { y: 34, opacity: 0, filter: "blur(10px)" }, { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.7, ease: "expo.out" }, w[1]);
+        });
+
+        // Scene 3: credit pill, then the URLs; everything lands still by ~3.9s and holds.
+        tl.fromTo(q("built"), { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.55, ease: "back.out(1.4)" }, 2.9);
+        tl.fromTo(q("url-1"), { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "expo.out" }, 3.05);
+        tl.fromTo(q("url-2"), { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "expo.out" }, 3.17);
+
+        tl.set({}, {}, DURATION);
+
+        window.addEventListener("hf-seek", function () { renderAt(window.__timelines[FRAME_ID].time()); });
+        renderAt(0);
+      })();
+    </script>
+  </div>
+</template>

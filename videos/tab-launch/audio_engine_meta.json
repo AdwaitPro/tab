@@ -1,0 +1,1188 @@
+{
+  "tts_provider": "heygen",
+  "voice_id": "742d54da82fb46a8be11480d9ec6e3c3",
+  "bgm": {
+    "path": "assets/bgm/track.mp3",
+    "volume": 0.12,
+    "query": "warm minimal electronic tech launch, confident, light pulse, uplifting, no vocals",
+    "mode": "retrieve",
+    "duration_s": 30
+  },
+  "bgm_pending": false,
+  "bgm_provider": "heygen",
+  "bgm_pid": null,
+  "bgm_log": null,
+  "bgm_mode": "retrieve",
+  "bgm_target_duration_s": null,
+  "bgm_seed_duration_s": null,
+  "bgm_loop_count": null,
+  "voices": [
+    {
+      "id": "01",
+      "path": "assets/voice/01.wav",
+      "duration_s": 3.344,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Agents",
+          "start": 0.299,
+          "end": 0.597
+        },
+        {
+          "id": "w1",
+          "text": "can",
+          "start": 0.683,
+          "end": 0.8107
+        },
+        {
+          "id": "w2",
+          "text": "trade.",
+          "start": 0.853,
+          "end": 1.365
+        },
+        {
+          "id": "w3",
+          "text": "They",
+          "start": 1.664,
+          "end": 1.749
+        },
+        {
+          "id": "w4",
+          "text": "still",
+          "start": 1.792,
+          "end": 1.9627
+        },
+        {
+          "id": "w5",
+          "text": "can't",
+          "start": 2.048,
+          "end": 2.2187
+        },
+        {
+          "id": "w6",
+          "text": "split",
+          "start": 2.304,
+          "end": 2.517
+        },
+        {
+          "id": "w7",
+          "text": "a",
+          "start": 2.56,
+          "end": 2.6027
+        },
+        {
+          "id": "w8",
+          "text": "dinner",
+          "start": 2.645,
+          "end": 2.773
+        },
+        {
+          "id": "w9",
+          "text": "bill.",
+          "start": 2.901,
+          "end": 3.114
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "path": "assets/voice/02.wav",
+      "duration_s": 2.978,
+      "words": [
+        {
+          "id": "w0",
+          "text": "This",
+          "start": 0.299,
+          "end": 0.4267
+        },
+        {
+          "id": "w1",
+          "text": "is",
+          "start": 0.469,
+          "end": 0.5547
+        },
+        {
+          "id": "w2",
+          "text": "Tab.",
+          "start": 0.597,
+          "end": 1.045
+        },
+        {
+          "id": "w3",
+          "text": "It",
+          "start": 1.28,
+          "end": 1.408
+        },
+        {
+          "id": "w4",
+          "text": "makes",
+          "start": 1.451,
+          "end": 1.5787
+        },
+        {
+          "id": "w5",
+          "text": "PayBox",
+          "start": 1.664,
+          "end": 2.0907
+        },
+        {
+          "id": "w6",
+          "text": "multiplayer.",
+          "start": 2.219,
+          "end": 2.7509750566893425
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "path": "assets/voice/03.wav",
+      "duration_s": 9.796,
+      "words": [
+        {
+          "id": "w0",
+          "text": "I",
+          "start": 0.299,
+          "end": 0.427
+        },
+        {
+          "id": "w1",
+          "text": "just",
+          "start": 0.469,
+          "end": 0.512
+        },
+        {
+          "id": "w2",
+          "text": "tell",
+          "start": 0.555,
+          "end": 0.6827
+        },
+        {
+          "id": "w3",
+          "text": "my",
+          "start": 0.725,
+          "end": 0.8107
+        },
+        {
+          "id": "w4",
+          "text": "agent.",
+          "start": 0.853,
+          "end": 1.323
+        },
+        {
+          "id": "w5",
+          "text": "Split",
+          "start": 1.579,
+          "end": 1.877
+        },
+        {
+          "id": "w6",
+          "text": "dinner,",
+          "start": 1.92,
+          "end": 2.219
+        },
+        {
+          "id": "w7",
+          "text": "six",
+          "start": 2.432,
+          "end": 2.645
+        },
+        {
+          "id": "w8",
+          "text": "USDC,",
+          "start": 2.816,
+          "end": 3.584
+        },
+        {
+          "id": "w9",
+          "text": "with",
+          "start": 3.755,
+          "end": 3.968
+        },
+        {
+          "id": "w10",
+          "text": "Meera",
+          "start": 4.011,
+          "end": 4.224
+        },
+        {
+          "id": "w11",
+          "text": "and",
+          "start": 4.395,
+          "end": 4.608
+        },
+        {
+          "id": "w12",
+          "text": "Aarav.",
+          "start": 4.651,
+          "end": 5.248
+        },
+        {
+          "id": "w13",
+          "text": "Tab",
+          "start": 5.589,
+          "end": 5.8027
+        },
+        {
+          "id": "w14",
+          "text": "hands",
+          "start": 5.888,
+          "end": 6.0587
+        },
+        {
+          "id": "w15",
+          "text": "back",
+          "start": 6.144,
+          "end": 6.272
+        },
+        {
+          "id": "w16",
+          "text": "a",
+          "start": 6.315,
+          "end": 6.357
+        },
+        {
+          "id": "w17",
+          "text": "pay",
+          "start": 6.4,
+          "end": 6.5707
+        },
+        {
+          "id": "w18",
+          "text": "link",
+          "start": 6.613,
+          "end": 6.741
+        },
+        {
+          "id": "w19",
+          "text": "for",
+          "start": 6.827,
+          "end": 6.912
+        },
+        {
+          "id": "w20",
+          "text": "each",
+          "start": 6.955,
+          "end": 7.04
+        },
+        {
+          "id": "w21",
+          "text": "of",
+          "start": 7.125,
+          "end": 7.168
+        },
+        {
+          "id": "w22",
+          "text": "them,",
+          "start": 7.211,
+          "end": 7.509
+        },
+        {
+          "id": "w23",
+          "text": "with",
+          "start": 7.68,
+          "end": 7.765
+        },
+        {
+          "id": "w24",
+          "text": "an",
+          "start": 7.808,
+          "end": 7.8507
+        },
+        {
+          "id": "w25",
+          "text": "exact",
+          "start": 7.936,
+          "end": 8.2347
+        },
+        {
+          "id": "w26",
+          "text": "amount",
+          "start": 8.448,
+          "end": 8.576
+        },
+        {
+          "id": "w27",
+          "text": "it",
+          "start": 8.704,
+          "end": 8.747
+        },
+        {
+          "id": "w28",
+          "text": "can",
+          "start": 8.789,
+          "end": 8.8747
+        },
+        {
+          "id": "w29",
+          "text": "check",
+          "start": 8.917,
+          "end": 9.088
+        },
+        {
+          "id": "w30",
+          "text": "on",
+          "start": 9.131,
+          "end": 9.216
+        },
+        {
+          "id": "w31",
+          "text": "chain.",
+          "start": 9.259,
+          "end": 9.561
+        }
+      ]
+    },
+    {
+      "id": "04",
+      "path": "assets/voice/04.wav",
+      "duration_s": 8.568,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Meera",
+          "start": 0.299,
+          "end": 0.469
+        },
+        {
+          "id": "w1",
+          "text": "opens",
+          "start": 0.597,
+          "end": 0.8107
+        },
+        {
+          "id": "w2",
+          "text": "hers.",
+          "start": 0.853,
+          "end": 1.365
+        },
+        {
+          "id": "w3",
+          "text": "Two",
+          "start": 1.707,
+          "end": 1.877
+        },
+        {
+          "id": "w4",
+          "text": "USDC,",
+          "start": 1.963,
+          "end": 2.795
+        },
+        {
+          "id": "w5",
+          "text": "plus",
+          "start": 2.987,
+          "end": 3.1147
+        },
+        {
+          "id": "w6",
+          "text": "a",
+          "start": 3.157,
+          "end": 3.2427
+        },
+        {
+          "id": "w7",
+          "text": "tiny",
+          "start": 3.285,
+          "end": 3.541
+        },
+        {
+          "id": "w8",
+          "text": "tag",
+          "start": 3.669,
+          "end": 3.8827
+        },
+        {
+          "id": "w9",
+          "text": "so",
+          "start": 4.053,
+          "end": 4.181
+        },
+        {
+          "id": "w10",
+          "text": "Tab",
+          "start": 4.224,
+          "end": 4.437
+        },
+        {
+          "id": "w11",
+          "text": "can",
+          "start": 4.608,
+          "end": 4.693
+        },
+        {
+          "id": "w12",
+          "text": "spot",
+          "start": 4.736,
+          "end": 4.949
+        },
+        {
+          "id": "w13",
+          "text": "her",
+          "start": 4.992,
+          "end": 5.077
+        },
+        {
+          "id": "w14",
+          "text": "payment.",
+          "start": 5.12,
+          "end": 5.675
+        },
+        {
+          "id": "w15",
+          "text": "She",
+          "start": 5.973,
+          "end": 6.101
+        },
+        {
+          "id": "w16",
+          "text": "pays",
+          "start": 6.144,
+          "end": 6.3147
+        },
+        {
+          "id": "w17",
+          "text": "from",
+          "start": 6.357,
+          "end": 6.4427
+        },
+        {
+          "id": "w18",
+          "text": "any",
+          "start": 6.485,
+          "end": 6.613
+        },
+        {
+          "id": "w19",
+          "text": "wallet.",
+          "start": 6.741,
+          "end": 7.211
+        },
+        {
+          "id": "w20",
+          "text": "No",
+          "start": 7.381,
+          "end": 7.552
+        },
+        {
+          "id": "w21",
+          "text": "PayBox",
+          "start": 7.595,
+          "end": 7.936
+        },
+        {
+          "id": "w22",
+          "text": "needed.",
+          "start": 8.021,
+          "end": 8.318775510204082
+        }
+      ]
+    },
+    {
+      "id": "05",
+      "path": "assets/voice/05.wav",
+      "duration_s": 7.236,
+      "words": [
+        {
+          "id": "w0",
+          "text": "That",
+          "start": 0.299,
+          "end": 0.469
+        },
+        {
+          "id": "w1",
+          "text": "tag",
+          "start": 0.555,
+          "end": 0.725
+        },
+        {
+          "id": "w2",
+          "text": "makes",
+          "start": 0.811,
+          "end": 0.9387
+        },
+        {
+          "id": "w3",
+          "text": "every",
+          "start": 1.067,
+          "end": 1.237
+        },
+        {
+          "id": "w4",
+          "text": "payment",
+          "start": 1.408,
+          "end": 1.664
+        },
+        {
+          "id": "w5",
+          "text": "unique.",
+          "start": 1.707,
+          "end": 2.261
+        },
+        {
+          "id": "w6",
+          "text": "Tab",
+          "start": 2.645,
+          "end": 2.8587
+        },
+        {
+          "id": "w7",
+          "text": "reads",
+          "start": 2.987,
+          "end": 3.2
+        },
+        {
+          "id": "w8",
+          "text": "Base",
+          "start": 3.243,
+          "end": 3.456
+        },
+        {
+          "id": "w9",
+          "text": "transfer",
+          "start": 3.541,
+          "end": 3.925
+        },
+        {
+          "id": "w10",
+          "text": "logs,",
+          "start": 3.968,
+          "end": 4.373
+        },
+        {
+          "id": "w11",
+          "text": "not",
+          "start": 4.48,
+          "end": 4.608
+        },
+        {
+          "id": "w12",
+          "text": "a",
+          "start": 4.651,
+          "end": 4.693
+        },
+        {
+          "id": "w13",
+          "text": "database.",
+          "start": 4.736,
+          "end": 5.355
+        },
+        {
+          "id": "w14",
+          "text": "The",
+          "start": 5.632,
+          "end": 5.717
+        },
+        {
+          "id": "w15",
+          "text": "chain",
+          "start": 5.76,
+          "end": 5.973
+        },
+        {
+          "id": "w16",
+          "text": "is",
+          "start": 6.187,
+          "end": 6.4427
+        },
+        {
+          "id": "w17",
+          "text": "the",
+          "start": 6.485,
+          "end": 6.613
+        },
+        {
+          "id": "w18",
+          "text": "receipt.",
+          "start": 6.613,
+          "end": 7.0068480725623585
+        }
+      ]
+    },
+    {
+      "id": "06",
+      "path": "assets/voice/06.wav",
+      "duration_s": 10.553,
+      "words": [
+        {
+          "id": "w0",
+          "text": "And",
+          "start": 0.299,
+          "end": 0.384
+        },
+        {
+          "id": "w1",
+          "text": "it",
+          "start": 0.427,
+          "end": 0.469
+        },
+        {
+          "id": "w2",
+          "text": "goes",
+          "start": 0.512,
+          "end": 0.597
+        },
+        {
+          "id": "w3",
+          "text": "past",
+          "start": 0.64,
+          "end": 0.8107
+        },
+        {
+          "id": "w4",
+          "text": "bills.",
+          "start": 0.896,
+          "end": 1.579
+        },
+        {
+          "id": "w5",
+          "text": "Deals",
+          "start": 2.005,
+          "end": 2.2187
+        },
+        {
+          "id": "w6",
+          "text": "pay",
+          "start": 2.347,
+          "end": 2.517
+        },
+        {
+          "id": "w7",
+          "text": "on",
+          "start": 2.56,
+          "end": 2.645
+        },
+        {
+          "id": "w8",
+          "text": "delivery,",
+          "start": 2.688,
+          "end": 3.136
+        },
+        {
+          "id": "w9",
+          "text": "and",
+          "start": 3.328,
+          "end": 3.456
+        },
+        {
+          "id": "w10",
+          "text": "every",
+          "start": 3.499,
+          "end": 3.669
+        },
+        {
+          "id": "w11",
+          "text": "lock",
+          "start": 3.797,
+          "end": 4.0107
+        },
+        {
+          "id": "w12",
+          "text": "has",
+          "start": 4.096,
+          "end": 4.224
+        },
+        {
+          "id": "w13",
+          "text": "a",
+          "start": 4.267,
+          "end": 4.309
+        },
+        {
+          "id": "w14",
+          "text": "way",
+          "start": 4.352,
+          "end": 4.48
+        },
+        {
+          "id": "w15",
+          "text": "out.",
+          "start": 4.523,
+          "end": 4.971
+        },
+        {
+          "id": "w16",
+          "text": "Bets",
+          "start": 5.291,
+          "end": 5.504
+        },
+        {
+          "id": "w17",
+          "text": "lock",
+          "start": 5.589,
+          "end": 5.8027
+        },
+        {
+          "id": "w18",
+          "text": "both",
+          "start": 5.888,
+          "end": 6.0587
+        },
+        {
+          "id": "w19",
+          "text": "stakes,",
+          "start": 6.144,
+          "end": 6.485
+        },
+        {
+          "id": "w20",
+          "text": "and",
+          "start": 6.613,
+          "end": 6.912
+        },
+        {
+          "id": "w21",
+          "text": "Chainlink",
+          "start": 6.955,
+          "end": 7.3387
+        },
+        {
+          "id": "w22",
+          "text": "settles",
+          "start": 7.424,
+          "end": 7.68
+        },
+        {
+          "id": "w23",
+          "text": "them,",
+          "start": 7.765,
+          "end": 8.021
+        },
+        {
+          "id": "w24",
+          "text": "with",
+          "start": 8.192,
+          "end": 8.3627
+        },
+        {
+          "id": "w25",
+          "text": "proof",
+          "start": 8.405,
+          "end": 8.661
+        },
+        {
+          "id": "w26",
+          "text": "of",
+          "start": 8.704,
+          "end": 8.789
+        },
+        {
+          "id": "w27",
+          "text": "the",
+          "start": 8.832,
+          "end": 8.8747
+        },
+        {
+          "id": "w28",
+          "text": "first",
+          "start": 8.917,
+          "end": 9.1307
+        },
+        {
+          "id": "w29",
+          "text": "price",
+          "start": 9.216,
+          "end": 9.429
+        },
+        {
+          "id": "w30",
+          "text": "after",
+          "start": 9.557,
+          "end": 9.685
+        },
+        {
+          "id": "w31",
+          "text": "the",
+          "start": 9.813,
+          "end": 9.856
+        },
+        {
+          "id": "w32",
+          "text": "deadline.",
+          "start": 9.899,
+          "end": 10.327
+        }
+      ]
+    },
+    {
+      "id": "07",
+      "path": "assets/voice/07.wav",
+      "duration_s": 9.404,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Every",
+          "start": 0.299,
+          "end": 0.469
+        },
+        {
+          "id": "w1",
+          "text": "approval",
+          "start": 0.64,
+          "end": 0.896
+        },
+        {
+          "id": "w2",
+          "text": "is",
+          "start": 1.067,
+          "end": 1.152
+        },
+        {
+          "id": "w3",
+          "text": "for",
+          "start": 1.195,
+          "end": 1.28
+        },
+        {
+          "id": "w4",
+          "text": "the",
+          "start": 1.323,
+          "end": 1.408
+        },
+        {
+          "id": "w5",
+          "text": "exact",
+          "start": 1.493,
+          "end": 1.8347
+        },
+        {
+          "id": "w6",
+          "text": "amount,",
+          "start": 2.048,
+          "end": 2.347
+        },
+        {
+          "id": "w7",
+          "text": "never",
+          "start": 2.517,
+          "end": 2.773
+        },
+        {
+          "id": "w8",
+          "text": "unlimited.",
+          "start": 2.901,
+          "end": 3.477
+        },
+        {
+          "id": "w9",
+          "text": "A",
+          "start": 3.755,
+          "end": 3.84
+        },
+        {
+          "id": "w10",
+          "text": "hundred",
+          "start": 3.883,
+          "end": 4.096
+        },
+        {
+          "id": "w11",
+          "text": "and",
+          "start": 4.224,
+          "end": 4.352
+        },
+        {
+          "id": "w12",
+          "text": "twenty",
+          "start": 4.395,
+          "end": 4.608
+        },
+        {
+          "id": "w13",
+          "text": "four",
+          "start": 4.736,
+          "end": 4.949
+        },
+        {
+          "id": "w14",
+          "text": "tests.",
+          "start": 5.035,
+          "end": 5.632
+        },
+        {
+          "id": "w15",
+          "text": "Full",
+          "start": 5.845,
+          "end": 6.0587
+        },
+        {
+          "id": "w16",
+          "text": "coverage.",
+          "start": 6.101,
+          "end": 6.656
+        },
+        {
+          "id": "w17",
+          "text": "Verified",
+          "start": 6.912,
+          "end": 7.2107
+        },
+        {
+          "id": "w18",
+          "text": "on",
+          "start": 7.381,
+          "end": 7.509
+        },
+        {
+          "id": "w19",
+          "text": "Base,",
+          "start": 7.595,
+          "end": 7.872
+        },
+        {
+          "id": "w20",
+          "text": "and",
+          "start": 8.021,
+          "end": 8.192
+        },
+        {
+          "id": "w21",
+          "text": "ready",
+          "start": 8.235,
+          "end": 8.405
+        },
+        {
+          "id": "w22",
+          "text": "in",
+          "start": 8.533,
+          "end": 8.576
+        },
+        {
+          "id": "w23",
+          "text": "PayBox.",
+          "start": 8.619,
+          "end": 9.177913832199547
+        }
+      ]
+    },
+    {
+      "id": "08",
+      "path": "assets/voice/08.wav",
+      "duration_s": 3.344,
+      "words": [
+        {
+          "id": "w0",
+          "text": "And",
+          "start": 0.256,
+          "end": 0.4267
+        },
+        {
+          "id": "w1",
+          "text": "every",
+          "start": 0.469,
+          "end": 0.6827
+        },
+        {
+          "id": "w2",
+          "text": "link",
+          "start": 0.853,
+          "end": 1.0667
+        },
+        {
+          "id": "w3",
+          "text": "brings",
+          "start": 1.237,
+          "end": 1.493
+        },
+        {
+          "id": "w4",
+          "text": "someone",
+          "start": 1.621,
+          "end": 1.792
+        },
+        {
+          "id": "w5",
+          "text": "new",
+          "start": 2.005,
+          "end": 2.176
+        },
+        {
+          "id": "w6",
+          "text": "into",
+          "start": 2.261,
+          "end": 2.389
+        },
+        {
+          "id": "w7",
+          "text": "PayBox.",
+          "start": 2.517,
+          "end": 3.094
+        }
+      ]
+    },
+    {
+      "id": "09",
+      "path": "assets/voice/09.wav",
+      "duration_s": 4.101,
+      "words": [
+        {
+          "id": "w0",
+          "text": "Tab.",
+          "start": 0.256,
+          "end": 0.832
+        },
+        {
+          "id": "w1",
+          "text": "Multiplayer",
+          "start": 1.152,
+          "end": 1.664
+        },
+        {
+          "id": "w2",
+          "text": "money",
+          "start": 1.792,
+          "end": 1.877
+        },
+        {
+          "id": "w3",
+          "text": "for",
+          "start": 2.005,
+          "end": 2.0907
+        },
+        {
+          "id": "w4",
+          "text": "agents.",
+          "start": 2.133,
+          "end": 2.667
+        },
+        {
+          "id": "w5",
+          "text": "Built",
+          "start": 2.944,
+          "end": 3.157
+        },
+        {
+          "id": "w6",
+          "text": "on",
+          "start": 3.243,
+          "end": 3.328
+        },
+        {
+          "id": "w7",
+          "text": "PayBox.",
+          "start": 3.371,
+          "end": 3.860544217687075
+        }
+      ]
+    }
+  ],
+  "sfx": [
+    {
+      "id": "01",
+      "name": "soft whoosh",
+      "file": "assets/sfx/soft-whoosh.mp3",
+      "source": "heygen",
+      "offset_s": 0,
+      "duration_s": 1.834,
+      "volume": 0.35
+    },
+    {
+      "id": "02",
+      "name": "coin chime",
+      "file": "assets/sfx/coin-chime.mp3",
+      "source": "heygen",
+      "offset_s": 0,
+      "duration_s": 1.238,
+      "volume": 0.35
+    },
+    {
+      "id": "03",
+      "name": "keyboard typing",
+      "file": "assets/sfx/keyboard-typing.mp3",
+      "source": "heygen",
+      "offset_s": 0,
+      "duration_s": 44.382,
+      "volume": 0.35
+    },
+    {
+      "id": "03",
+      "name": "soft pop",
+      "file": "assets/sfx/soft-pop.mp3",
+      "source": "heygen",
+      "offset_s": 0,
+      "duration_s": 0.696,
+      "volume": 0.35
+    },
+    {
+      "id": "04",
+      "name": "soft whoosh",
+      "file": "assets/sfx/soft-whoosh.mp3",
+      "source": "heygen",
+      "offset_s": 0,
+      "duration_s": 1.834,
+      "volume": 0.35
+    },
+    {
+      "id": "05",
+      "name": "soft tick",
+      "file": "assets/sfx/soft-tick.mp3",
+      "source": "heygen",
+      "offset_s": 0,
+      "duration_s": 0.264,
+      "volume": 0.35
+    },
+    {
+      "id": "06",
+      "name": "soft pop",
+      "file": "assets/sfx/soft-pop.mp3",
+      "source": "heygen",
+      "offset_s": 0,
+      "duration_s": 0.696,
+      "volume": 0.35
+    },
+    {
+      "id": "06",
+      "name": "lock click",
+      "file": "assets/sfx/lock-click.mp3",
+      "source": "heygen",
+      "offset_s": 0,
+      "duration_s": 0.264,
+      "volume": 0.35
+    },
+    {
+      "id": "07",
+      "name": "ui click",
+      "file": "assets/sfx/ui-click.mp3",
+      "source": "heygen",
+      "offset_s": 0,
+      "duration_s": 0.576,
+      "volume": 0.35
+    },
+    {
+      "id": "07",
+      "name": "soft tick",
+      "file": "assets/sfx/soft-tick.mp3",
+      "source": "heygen",
+      "offset_s": 0,
+      "duration_s": 0.264,
+      "volume": 0.35
+    },
+    {
+      "id": "07",
+      "name": "chime",
+      "file": "assets/sfx/chime.mp3",
+      "source": "heygen",
+      "offset_s": 0,
+      "duration_s": 0.72,
+      "volume": 0.35
+    },
+    {
+      "id": "08",
+      "name": "soft pop",
+      "file": "assets/sfx/soft-pop.mp3",
+      "source": "heygen",
+      "offset_s": 0,
+      "duration_s": 0.696,
+      "volume": 0.35
+    },
+    {
+      "id": "09",
+      "name": "coin chime",
+      "file": "assets/sfx/coin-chime.mp3",
+      "source": "heygen",
+      "offset_s": 0,
+      "duration_s": 1.238,
+      "volume": 0.35
+    }
+  ],
+  "total_duration_s": 59.324
+}

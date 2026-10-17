@@ -1,0 +1,384 @@
+<template>
+  <div id="root" data-composition-id="02-reveal" data-start="0" data-duration="3.478" data-width="1920" data-height="1080">
+    <style>
+      @font-face { font-family: "Satoshi"; font-weight: 500; font-style: normal; src: url("assets/fonts/captured-Satoshi_500-s.p.2gbh8zsgu5xby.woff2") format("woff2"); }
+      @font-face { font-family: "Satoshi"; font-weight: 700; font-style: normal; src: url("assets/fonts/captured-Satoshi_700-s.p.19z5sx2nusz2v.woff2") format("woff2"); }
+      @font-face { font-family: "Satoshi"; font-weight: 900; font-style: normal; src: url("assets/fonts/captured-Satoshi_900-s.p.03d7m3bcbsl0m.woff2") format("woff2"); }
+      @font-face { font-family: "Instrument Serif"; font-weight: 400; font-style: italic; src: url("assets/fonts/captured-7ebf22b5a21034f8-s.p.3strvg7o-g5v2.woff2") format("woff2"); }
+
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; }
+
+      .clip { position: absolute; inset: 0; }
+
+      [id="02-reveal-ground"] {
+        background:
+          radial-gradient(1100px 760px at 50% 38%, rgba(26, 136, 248, 0.10), rgba(26, 136, 248, 0) 70%),
+          radial-gradient(900px 600px at 92% 4%, rgba(26, 136, 248, 0.07), rgba(26, 136, 248, 0) 70%),
+          #FBFAF9;
+      }
+
+      .reveal02-lockup-layer { pointer-events: none; }
+
+      .reveal02-lockup {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 404px;
+        height: 216px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+      }
+
+      .reveal02-mark {
+        width: 216px;
+        height: 216px;
+        flex: none;
+        position: relative;
+        z-index: 2;
+        filter: drop-shadow(0 2px 4px rgba(14, 116, 224, 0.18)) drop-shadow(0 24px 48px rgba(14, 116, 224, 0.22));
+      }
+
+      .reveal02-mark svg { width: 100%; height: 100%; display: block; --bg: #FBFAF9; }
+
+      .reveal02-word-mask {
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        padding: 0 12px 0 4px;
+        margin-left: -12px;
+      }
+
+      .reveal02-word {
+        display: block;
+        font-family: "Satoshi", sans-serif;
+        font-weight: 900;
+        font-size: 256px;
+        line-height: 1;
+        letter-spacing: -0.035em;
+        color: #222222;
+        padding-bottom: 14px;
+      }
+
+      .reveal02-tagline {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 676px;
+        text-align: center;
+        font-family: "Satoshi", sans-serif;
+        font-weight: 500;
+        font-size: 66px;
+        line-height: 1.15;
+        letter-spacing: -0.025em;
+        color: #222222;
+        white-space: nowrap;
+      }
+
+      .reveal02-tw { display: inline-block; margin: 0 0.12em; }
+
+      .reveal02-serif {
+        font-family: "Instrument Serif", serif;
+        font-style: italic;
+        font-weight: 400;
+        font-size: 82px;
+        letter-spacing: -0.01em;
+        color: #1A88F8;
+      }
+
+      .reveal02-three-layer { pointer-events: none; }
+
+      [id="02-reveal-three"] {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1920px;
+        height: 1080px;
+        display: block;
+      }
+
+      .reveal02-node-label {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 60px;
+        height: 60px;
+        margin: -30px 0 0 -30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Satoshi", sans-serif;
+        font-weight: 700;
+        font-size: 28px;
+        letter-spacing: -0.01em;
+        color: #FFFFFF;
+        box-shadow: 0 0 0 4px #FBFAF9, 0 1px 2px rgba(34, 34, 34, 0.08), 0 10px 24px rgba(14, 116, 224, 0.18);
+        will-change: transform, opacity;
+      }
+
+      .reveal02-node-a { background: #1A88F8; }
+      .reveal02-node-m { background: #0F8F8A; }
+    </style>
+
+    <div id="02-reveal-ground" class="clip" data-start="0" data-duration="3.478" data-track-index="0"></div>
+
+    <div class="clip reveal02-lockup-layer" data-start="0" data-duration="3.478" data-track-index="1">
+      <div class="reveal02-lockup" id="02-reveal-lockup">
+        <div class="reveal02-mark" id="02-reveal-mark">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="reveal02-mark-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4DAFFF"></stop><stop offset="1" stop-color="#0E74E0"></stop></linearGradient></defs><rect x="2" y="2" width="28" height="28" rx="9" fill="url(#reveal02-mark-g)"></rect><path d="M2 13.5a2.5 2.5 0 0 0 0 5" fill="#FBFAF9"></path><path d="M30 13.5a2.5 2.5 0 0 1 0 5" fill="#FBFAF9"></path><path d="M10.5 11h11M16 11v11" stroke="#fff" stroke-width="3.2" stroke-linecap="round"></path><rect x="2" y="2" width="28" height="14" rx="9" fill="#fff" opacity="0.14"></rect></svg>
+        </div>
+        <div class="reveal02-word-mask">
+          <span class="reveal02-word" id="02-reveal-word">Tab</span>
+        </div>
+      </div>
+      <div class="reveal02-tagline" id="02-reveal-tagline">
+        <span class="reveal02-tw">Settle</span><span class="reveal02-tw">up</span><span class="reveal02-tw">in</span><span class="reveal02-tw">one</span><span class="reveal02-tw reveal02-serif">sentence</span>
+      </div>
+    </div>
+
+    <div class="clip reveal02-three-layer" data-start="0" data-duration="3.478" data-track-index="2">
+      <canvas id="02-reveal-three" width="1920" height="1080"></canvas>
+      <div class="reveal02-node-label reveal02-node-a" id="02-reveal-label-a">A</div>
+      <div class="reveal02-node-label reveal02-node-m" id="02-reveal-label-m">M</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+    <script>
+      (function () {
+        const FRAME_ID = "02-reveal";
+        const DURATION = 2.978;
+        const W = 1920;
+        const H = 1080;
+        const byId = (id) => document.getElementById(id);
+
+        const clamp01 = (v) => Math.min(1, Math.max(0, v));
+        const lerp = (a, b, p) => a + (b - a) * p;
+        const seg = (t, a, b) => clamp01((t - a) / (b - a));
+        const easeInOutCubic = (p) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2);
+        const easeOutCubic = (p) => 1 - Math.pow(1 - p, 3);
+        const easeOutExpo = (p) => (p >= 1 ? 1 : 1 - Math.pow(2, -10 * p));
+
+        // Shared coin + agent-node scene (kept identical to 09-close per _three-note.md).
+        function drawCoinFace() {
+          const size = 1024;
+          const c = document.createElement("canvas");
+          c.width = size;
+          c.height = size;
+          const g = c.getContext("2d");
+          const r = size / 2;
+
+          const disc = g.createRadialGradient(r * 0.72, r * 0.62, r * 0.05, r, r, r);
+          disc.addColorStop(0, "#FFF3D2");
+          disc.addColorStop(0.45, "#F1D38C");
+          disc.addColorStop(0.85, "#D9AE57");
+          disc.addColorStop(1, "#B98A35");
+          g.fillStyle = disc;
+          g.fillRect(0, 0, size, size);
+
+          g.lineWidth = 14;
+          g.strokeStyle = "rgba(150, 105, 35, 0.55)";
+          g.beginPath();
+          g.arc(r, r, r * 0.84, 0, Math.PI * 2);
+          g.stroke();
+          g.lineWidth = 6;
+          g.strokeStyle = "rgba(255, 248, 228, 0.85)";
+          g.beginPath();
+          g.arc(r - 3, r - 4, r * 0.865, 0, Math.PI * 2);
+          g.stroke();
+
+          g.textAlign = "center";
+          g.textBaseline = "middle";
+          g.font = "900 600px sans-serif";
+          const cy = r + 20;
+          g.fillStyle = "rgba(120, 80, 20, 0.55)";
+          g.fillText("$", r + 12, cy + 14);
+          g.fillStyle = "rgba(255, 250, 235, 0.95)";
+          g.fillText("$", r - 6, cy - 7);
+          const glyph = g.createLinearGradient(0, r * 0.3, 0, r * 1.7);
+          glyph.addColorStop(0, "#EBC874");
+          glyph.addColorStop(1, "#C08A33");
+          g.fillStyle = glyph;
+          g.fillText("$", r, cy);
+
+          const tex = new THREE.CanvasTexture(c);
+          tex.colorSpace = THREE.SRGBColorSpace;
+          tex.anisotropy = 8;
+          return tex;
+        }
+
+        function buildCoinScene(canvas) {
+          const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, preserveDrawingBuffer: true });
+          renderer.setPixelRatio(1);
+          renderer.setSize(W, H, false);
+          renderer.outputColorSpace = THREE.SRGBColorSpace;
+          renderer.toneMapping = THREE.ACESFilmicToneMapping;
+          renderer.toneMappingExposure = 1.1;
+          renderer.setClearColor(0x000000, 0);
+
+          const scene = new THREE.Scene();
+          const camera = new THREE.PerspectiveCamera(30, W / H, 0.1, 100);
+          camera.position.set(0, 0, 10);
+
+          scene.add(new THREE.HemisphereLight(0xffffff, 0xdbe9ff, 1.2));
+          const key = new THREE.DirectionalLight(0xffffff, 2.2);
+          key.position.set(-4, 5, 6);
+          scene.add(key);
+          const rim = new THREE.DirectionalLight(0x1a88f8, 1.5);
+          rim.position.set(4, 2, -5);
+          scene.add(rim);
+
+          const coinGeo = new THREE.CylinderGeometry(1, 1, 0.16, 96);
+          // Face the +y cap to camera, then roll 90deg so the "$" reads upright and unmirrored.
+          coinGeo.rotateX(Math.PI / 2);
+          coinGeo.rotateZ(Math.PI / 2);
+          const faceTex = drawCoinFace();
+          const edgeMat = new THREE.MeshStandardMaterial({ color: 0xe8c877, metalness: 0.9, roughness: 0.28 });
+          const faceMat = new THREE.MeshStandardMaterial({ map: faceTex, metalness: 0.35, roughness: 0.32 });
+          const coinMesh = new THREE.Mesh(coinGeo, [edgeMat, faceMat, faceMat]);
+          const coin = new THREE.Group();
+          coin.add(coinMesh);
+          scene.add(coin);
+
+          const nodeGeo = new THREE.SphereGeometry(0.55, 64, 48);
+          const makeNode = () => {
+            const mat = new THREE.MeshPhysicalMaterial({
+              color: 0x1a88f8,
+              clearcoat: 1,
+              clearcoatRoughness: 0.08,
+              roughness: 0.15,
+              metalness: 0.1,
+              emissive: 0x1a88f8,
+              emissiveIntensity: 0.12,
+              transparent: true,
+            });
+            const mesh = new THREE.Mesh(nodeGeo, mat);
+            scene.add(mesh);
+            return mesh;
+          };
+          const nodeA = makeNode();
+          const nodeM = makeNode();
+
+          return { renderer, scene, camera, coin, nodeA, nodeM };
+        }
+
+        const three = buildCoinScene(byId("02-reveal-three"));
+        const { renderer, scene, camera, coin, nodeA, nodeM } = three;
+        const labelA = byId("02-reveal-label-a");
+        const labelM = byId("02-reveal-label-m");
+
+        const NODE_X = 1.6;
+        const ARC_LIFT = 0.75;
+        const ARC_PEAK = 1.05;
+        const COIN_REST = new THREE.Vector3(0, 1.55, 0);
+
+        const arcPoint = (p, out) => {
+          out.set(lerp(-NODE_X, NODE_X, p), ARC_LIFT + ARC_PEAK * Math.sin(Math.PI * p), 0.6 * Math.sin(Math.PI * p));
+          return out;
+        };
+
+        const TRAIL_N = 56;
+        const trailPos = new Float32Array(TRAIL_N * 3);
+        const tmp = new THREE.Vector3();
+        for (let i = 0; i < TRAIL_N; i += 1) {
+          arcPoint(i / (TRAIL_N - 1), tmp);
+          trailPos[i * 3] = tmp.x;
+          trailPos[i * 3 + 1] = tmp.y;
+          trailPos[i * 3 + 2] = tmp.z - 0.05;
+        }
+        const trailGeo = new THREE.BufferGeometry();
+        trailGeo.setAttribute("position", new THREE.BufferAttribute(trailPos, 3));
+        const trailMat = new THREE.PointsMaterial({ color: 0x1a88f8, size: 6, sizeAttenuation: false, transparent: true, opacity: 0.5, depthWrite: false });
+        const trail = new THREE.Points(trailGeo, trailMat);
+        scene.add(trail);
+
+        const projected = new THREE.Vector3();
+        const placeLabel = (el, node, opacity) => {
+          projected.copy(node.position);
+          projected.y -= 0.55 * node.scale.x;
+          projected.project(camera);
+          const sx = (projected.x * 0.5 + 0.5) * W;
+          const sy = (-projected.y * 0.5 + 0.5) * H + 26;
+          const s = 0.7 + 0.3 * node.scale.x;
+          el.style.transform = "translate(" + sx.toFixed(2) + "px," + sy.toFixed(2) + "px) scale(" + s.toFixed(4) + ")";
+          el.style.opacity = opacity.toFixed(4);
+        };
+
+        function renderAt(time) {
+          const t = Math.min(DURATION, Math.max(0, time));
+
+          camera.position.z = lerp(10.8, 9.6, easeOutCubic(seg(t, 0, DURATION)));
+          camera.position.y = lerp(-0.12, 0.05, easeOutCubic(seg(t, 0, DURATION)));
+          camera.lookAt(0, camera.position.y, 0);
+
+          const intro = easeOutCubic(seg(t, 0, 0.4));
+          const spread = easeOutExpo(seg(t, 0.95, 1.6));
+          const nodeScale = lerp(0.88, 1, intro) * lerp(1, 0.62, spread);
+          const nodeX = lerp(NODE_X, 3.35, spread);
+          const nodeY = lerp(0, -0.25, spread);
+          nodeA.position.set(-nodeX, nodeY, 0);
+          nodeM.position.set(nodeX, nodeY, 0);
+          nodeA.scale.setScalar(nodeScale);
+          nodeM.scale.setScalar(nodeScale);
+          const nodeOpacity = lerp(1, 0.78, spread);
+          nodeA.material.opacity = nodeOpacity;
+          nodeM.material.opacity = nodeOpacity;
+          const pulse = (center) => Math.exp(-Math.pow((t - center) / 0.12, 2));
+          nodeA.material.emissiveIntensity = 0.12 + 0.55 * pulse(0.08);
+          nodeM.material.emissiveIntensity = 0.12 + 0.65 * pulse(0.86);
+
+          const pA = easeInOutCubic(seg(t, 0.02, 0.86));
+          const pB = easeOutExpo(seg(t, 0.86, 1.32));
+          arcPoint(pA, tmp);
+          coin.position.set(lerp(tmp.x, COIN_REST.x, pB), lerp(tmp.y, COIN_REST.y, pB), lerp(tmp.z, COIN_REST.z, pB));
+          coin.scale.setScalar(lerp(0.42, 0.6, pB) * lerp(0.9, 1, intro));
+          // Six half-turns land exactly face-on at rest.
+          coin.rotation.y = 6 * Math.PI * easeOutCubic(seg(t, 0, 1.32));
+          coin.rotation.x = -0.32 * Math.sin(Math.PI * pA) * (1 - pB);
+          coin.rotation.z = 0.12 * Math.sin(Math.PI * pA) * (1 - pB);
+          const settle = seg(t, 1.32, DURATION);
+          coin.position.y += 0.03 * Math.sin(Math.PI * settle);
+
+          trailGeo.setDrawRange(0, Math.round(TRAIL_N * pA));
+          trailMat.opacity = lerp(0.5, 0.14, easeOutCubic(seg(t, 0.95, 1.6)));
+
+          renderer.render(scene, camera);
+
+          const labelIntro = easeOutCubic(seg(t, 0.06, 0.42));
+          placeLabel(labelA, nodeA, labelIntro * nodeOpacity);
+          placeLabel(labelM, nodeM, labelIntro * nodeOpacity);
+        }
+
+        const tl = gsap.timeline({ paused: true });
+        const st = { t: 0 };
+        tl.to(st, { t: DURATION, duration: DURATION, ease: "none", onUpdate: () => renderAt(st.t) }, 0);
+
+        // "Tab." lands at 0.60; mark rises from behind the settling coin by ~1.3s.
+        tl.fromTo(byId("02-reveal-mark"),
+          { y: -190, scale: 0.28, rotation: -8, opacity: 0 },
+          { y: 0, scale: 1, rotation: 0, opacity: 1, duration: 0.62, ease: "expo.out" }, 0.86);
+        tl.fromTo(byId("02-reveal-word"),
+          { xPercent: -105, opacity: 0 },
+          { xPercent: 0, opacity: 1, duration: 0.58, ease: "power3.out" }, 1.02);
+        tl.fromTo(byId("02-reveal-lockup"),
+          { scale: 0.985 },
+          { scale: 1.015, duration: DURATION - 1.0, ease: "none" }, 1.0);
+
+        // Tagline builds into "multiplayer." (2.22) with "sentence" as the landing word.
+        tl.fromTo(byId("02-reveal-tagline").querySelectorAll(".reveal02-tw"),
+          { y: 34, opacity: 0, filter: "blur(6px)" },
+          { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.5, ease: "power3.out", stagger: 0.075 }, 1.86);
+
+        tl.set({}, {}, DURATION);
+
+        renderAt(0);
+        window.addEventListener("hf-seek", () => renderAt(window.__timelines[FRAME_ID].time()));
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines[FRAME_ID] = tl;
+      })();
+    </script>
+  </div>
+</template>

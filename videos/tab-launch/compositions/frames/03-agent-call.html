@@ -1,0 +1,316 @@
+<template>
+  <style>
+    @font-face { font-family: "Satoshi"; font-weight: 400; font-style: normal; src: url("assets/fonts/captured-Satoshi_400-s.p.2oultpqxb_gh9.woff2") format("woff2"); }
+    @font-face { font-family: "Satoshi"; font-weight: 500; font-style: normal; src: url("assets/fonts/captured-Satoshi_500-s.p.2gbh8zsgu5xby.woff2") format("woff2"); }
+    @font-face { font-family: "Satoshi"; font-weight: 700; font-style: normal; src: url("assets/fonts/captured-Satoshi_700-s.p.19z5sx2nusz2v.woff2") format("woff2"); }
+    @font-face { font-family: "Satoshi"; font-weight: 900; font-style: normal; src: url("assets/fonts/captured-Satoshi_900-s.p.03d7m3bcbsl0m.woff2") format("woff2"); }
+    @font-face { font-family: "Geist Mono"; font-weight: 400 600; font-style: normal; src: url("assets/fonts/captured-797e433ab948586e-s.p.1v5bejj26fx9h.woff2") format("woff2"); }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      font-family: "Satoshi", sans-serif;
+      color: #222222;
+    }
+    .\30 3-agent-call-ground {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(1100px 760px at 100% 0%, rgba(26, 136, 248, 0.10), rgba(26, 136, 248, 0) 70%),
+        radial-gradient(900px 600px at 0% 100%, rgba(26, 136, 248, 0.05), rgba(26, 136, 248, 0) 70%),
+        #FBFAF9;
+    }
+    .\30 3-agent-call-stage { position: absolute; inset: 0; perspective: 2200px; }
+    .\30 3-agent-call-cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
+
+    .\30 3-agent-call-phone {
+      position: absolute;
+      left: 1236px;
+      top: 104px;
+      width: 360px;
+      height: 780px;
+      border-radius: 44px;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow:
+        0 0 0 1px rgba(34, 34, 34, 0.06),
+        0 1px 2px rgba(34, 34, 34, 0.06),
+        0 12px 32px rgba(34, 34, 34, 0.08),
+        0 40px 80px rgba(14, 116, 224, 0.10);
+    }
+    .\30 3-agent-call-phone img { display: block; width: 360px; height: 780px; }
+
+    .\30 3-agent-call-win {
+      position: absolute;
+      left: 120px;
+      top: 96px;
+      width: 1140px;
+      height: 784px;
+      border-radius: 28px;
+      background: #ffffff;
+      box-shadow:
+        0 0 0 1px rgba(34, 34, 34, 0.05),
+        0 1px 2px rgba(34, 34, 34, 0.06),
+        0 12px 32px rgba(34, 34, 34, 0.08),
+        0 40px 80px rgba(14, 116, 224, 0.08);
+      transform-origin: 50% 60%;
+    }
+    .\30 3-agent-call-bar {
+      position: absolute; left: 0; right: 0; top: 0; height: 68px;
+      border-bottom: 1px solid rgba(34, 34, 34, 0.07);
+    }
+    .\30 3-agent-call-dot { position: absolute; top: 27px; width: 14px; height: 14px; border-radius: 50%; }
+    .\30 3-agent-call-title {
+      position: absolute; left: 0; right: 0; top: 0; height: 68px; line-height: 68px;
+      text-align: center; font-weight: 700; font-size: 22px; letter-spacing: -0.01em; color: #222222;
+    }
+    .\30 3-agent-call-title span { color: #64625F; font-weight: 500; }
+
+    .\30 3-agent-call-bubble {
+      position: absolute; right: 40px; top: 100px;
+      padding: 20px 30px; border-radius: 26px 26px 8px 26px;
+      background: #0E74E0; color: #ffffff;
+      font-weight: 500; font-size: 30px; letter-spacing: -0.01em; line-height: 38px;
+      box-shadow: 0 8px 24px rgba(14, 116, 224, 0.22);
+      transform-origin: 100% 100%;
+    }
+
+    .\30 3-agent-call-chip {
+      position: absolute; left: 40px; top: 206px; height: 54px;
+      padding: 0 22px 0 16px; border-radius: 100px;
+      background: rgba(26, 136, 248, 0.07); border: 1.5px solid rgba(26, 136, 248, 0.20);
+      display: flex; align-items: center; gap: 12px;
+      font-size: 26px; color: #64625F; font-weight: 500;
+      transform-origin: 0 50%;
+    }
+    .\30 3-agent-call-chip b { font-family: "Geist Mono", monospace; font-weight: 500; color: #222222; font-size: 26px; }
+    .\30 3-agent-call-ico { position: relative; width: 26px; height: 26px; }
+    .\30 3-agent-call-spin {
+      position: absolute; inset: 0; border-radius: 50%;
+      border: 3px solid rgba(26, 136, 248, 0.18); border-top-color: #1A88F8;
+    }
+    .\30 3-agent-call-tick {
+      position: absolute; inset: 0; border-radius: 50%; background: #1A88F8;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .\30 3-agent-call-head {
+      position: absolute; left: 44px; top: 284px;
+      font-size: 26px; font-weight: 500; color: #64625F; letter-spacing: -0.005em;
+    }
+    .\30 3-agent-call-head strong { color: #222222; font-weight: 700; }
+    .\30 3-agent-call-mono { font-family: "Geist Mono", monospace; font-weight: 500; }
+
+    .\30 3-agent-call-row {
+      position: absolute; left: 40px; right: 40px; height: 132px;
+      border-radius: 22px; background: #FBFAF9;
+      border: 1.5px solid rgba(34, 34, 34, 0.06);
+    }
+    .\30 3-agent-call-av {
+      position: absolute; left: 28px; top: 34px; width: 64px; height: 64px; border-radius: 50%;
+      background: rgba(26, 136, 248, 0.12); color: #0E74E0;
+      font-weight: 900; font-size: 28px; line-height: 64px; text-align: center;
+    }
+    .\30 3-agent-call-who {
+      position: absolute; left: 116px; top: 22px;
+      font-size: 30px; font-weight: 700; letter-spacing: -0.02em; color: #222222;
+    }
+    .\30 3-agent-call-who span { color: #64625F; font-weight: 500; }
+    .\30 3-agent-call-link {
+      position: absolute; left: 116px; top: 74px;
+      font-family: "Geist Mono", monospace; font-size: 26px; font-weight: 500; color: #0E74E0; letter-spacing: -0.01em;
+    }
+    .\30 3-agent-call-exact {
+      position: absolute; right: 32px; top: 16px; height: 52px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .\30 3-agent-call-exact small {
+      font-size: 18px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #1A88F8;
+      padding: 6px 12px; border-radius: 100px; background: rgba(26, 136, 248, 0.08);
+    }
+    .\30 3-agent-call-amt { position: relative; display: inline-block; font-family: "Geist Mono", monospace; font-size: 40px; font-weight: 600; color: #222222; letter-spacing: -0.02em; }
+    .\30 3-agent-call-amt i { font-style: normal; font-size: 24px; color: #64625F; font-weight: 500; margin-left: 8px; }
+    .\30 3-agent-call-ul {
+      position: absolute; left: -4px; right: -4px; bottom: 2px; height: 12px; border-radius: 6px;
+      background: #FEBE44; opacity: 0.85; z-index: -1; transform-origin: 0 50%;
+    }
+    .\30 3-agent-call-amtnum { position: relative; z-index: 1; }
+
+    .\30 3-agent-call-input {
+      position: absolute; left: 32px; right: 32px; top: 652px; height: 100px;
+      border-radius: 22px; background: #FBFAF9; border: 1.5px solid rgba(34, 34, 34, 0.08);
+    }
+    .\30 3-agent-call-typed {
+      position: absolute; left: 30px; top: 0; height: 100px; line-height: 100px;
+      font-size: 30px; font-weight: 500; color: #222222; letter-spacing: -0.01em; white-space: pre;
+    }
+    .\30 3-agent-call-ph { position: absolute; left: 30px; top: 0; line-height: 100px; font-size: 30px; font-weight: 500; color: #A9A6A2; }
+    .\30 3-agent-call-caret { display: inline-block; width: 3px; height: 36px; background: #1A88F8; vertical-align: -6px; margin-left: 2px; border-radius: 2px; }
+    .\30 3-agent-call-send {
+      position: absolute; right: 22px; top: 22px; width: 56px; height: 56px; border-radius: 50%;
+      background: #0E74E0; display: flex; align-items: center; justify-content: center;
+    }
+  </style>
+
+  <div id="root" data-composition-id="03-agent-call" data-width="1920" data-height="1080" data-duration="10.196">
+    <div class="clip 03-agent-call-ground" id="03-agent-call-ground" data-start="0" data-duration="10.196" data-track-index="0"></div>
+
+    <div class="03-agent-call-stage">
+      <div class="03-agent-call-cam" id="03-agent-call-cam">
+        <div class="03-agent-call-phone" id="03-agent-call-phone">
+          <img src="assets/split-page-mobile.png" alt="Tab split page on mobile" />
+        </div>
+
+        <div class="03-agent-call-win" id="03-agent-call-win">
+          <div class="03-agent-call-bar">
+            <div class="03-agent-call-dot" style="left:26px;background:#FF5F57"></div>
+            <div class="03-agent-call-dot" style="left:50px;background:#FEBC2E"></div>
+            <div class="03-agent-call-dot" style="left:74px;background:#28C840"></div>
+            <div class="03-agent-call-title">Your agent <span>· PayBox</span></div>
+          </div>
+
+          <div class="03-agent-call-bubble" id="03-agent-call-bubble">Split dinner, 6 USDC, with Meera and Aarav</div>
+
+          <div class="03-agent-call-chip" id="03-agent-call-chip">
+            <div class="03-agent-call-ico">
+              <div class="03-agent-call-spin" id="03-agent-call-spin"></div>
+              <div class="03-agent-call-tick" id="03-agent-call-tick">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8.5l3 3 6-7" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+            <b>tab_split</b> · PayBox
+          </div>
+
+          <div class="03-agent-call-head" id="03-agent-call-head">
+            <strong>Dinner at Toit</strong> · equal · total <span class="03-agent-call-mono">6.00</span> · your share <span class="03-agent-call-mono">2.00</span>
+          </div>
+
+          <div class="03-agent-call-row" id="03-agent-call-row1" style="top:338px">
+            <div class="03-agent-call-av">M</div>
+            <div class="03-agent-call-who">Meera <span>owes</span> <span class="03-agent-call-mono" style="color:#222222">2.00</span></div>
+            <div class="03-agent-call-link">tab-pay.vercel.app/r/6O1qqmgPP3pMxOGhvFEy2I</div>
+            <div class="03-agent-call-exact">
+              <small>exact</small>
+              <span class="03-agent-call-amt"><span class="03-agent-call-ul" id="03-agent-call-ul"></span><span class="03-agent-call-amtnum">2.003324</span><i>USDC</i></span>
+            </div>
+          </div>
+
+          <div class="03-agent-call-row" id="03-agent-call-row2" style="top:486px">
+            <div class="03-agent-call-av">A</div>
+            <div class="03-agent-call-who">Aarav <span>owes</span> <span class="03-agent-call-mono" style="color:#222222">2.00</span></div>
+            <div class="03-agent-call-link">tab-pay.vercel.app/r/7luP9T5QonboBmpshZqp4F</div>
+            <div class="03-agent-call-exact">
+              <small>exact</small>
+              <span class="03-agent-call-amt"><span class="03-agent-call-amtnum">2.00042</span><i>USDC</i></span>
+            </div>
+          </div>
+
+          <div class="03-agent-call-input">
+            <div class="03-agent-call-ph" id="03-agent-call-ph">Ask your agent</div>
+            <div class="03-agent-call-typed" id="03-agent-call-typed"></div>
+            <div class="03-agent-call-send">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M12 5l-6 6M12 5l6 6" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      var ID = "03-agent-call";
+      var DURATION = 9.796;
+      var PROMPT = "Split dinner, 6 USDC, with Meera and Aarav";
+      var root = document.querySelector('[data-composition-id="' + ID + '"]');
+      var q = function (id) { return root.querySelector('[id="' + id + '"]'); };
+
+      var typed = q(ID + "-typed");
+      var chars = [];
+      for (var i = 0; i < PROMPT.length; i++) {
+        var s = document.createElement("span");
+        s.textContent = PROMPT[i];
+        s.style.display = "none";
+        typed.appendChild(s);
+        chars.push(s);
+      }
+      var caret = document.createElement("span");
+      caret.className = "03-agent-call-caret";
+      typed.appendChild(caret);
+
+      var win = q(ID + "-win");
+      var cam = q(ID + "-cam");
+      var phone = q(ID + "-phone");
+      var ph = q(ID + "-ph");
+      var bubble = q(ID + "-bubble");
+      var chip = q(ID + "-chip");
+      var spin = q(ID + "-spin");
+      var tick = q(ID + "-tick");
+      var head = q(ID + "-head");
+      var row1 = q(ID + "-row1");
+      var row2 = q(ID + "-row2");
+      var ul = q(ID + "-ul");
+
+      var tl = gsap.timeline({ paused: true });
+
+      // Scene 1: window rises and settles flat out of a slight 3D tilt.
+      tl.fromTo(win,
+        { opacity: 0, y: 70, rotationY: -6, rotationX: 3, scale: 0.97 },
+        { opacity: 1, y: 0, rotationY: 0, rotationX: 0, scale: 1, duration: 1.1, ease: "expo.out" }, 0);
+      tl.fromTo(cam, { scale: 1, x: 0, y: 0 }, { scale: 1.02, x: -19, y: -10, duration: 7.6, ease: "none" }, 0);
+
+      // Hidden-until-cued states, set deterministically at t=0.
+      tl.set([bubble, chip, head, row1, row2], { opacity: 0 }, 0);
+      tl.set(tick, { scale: 0, opacity: 0 }, 0);
+      tl.set(phone, { opacity: 0, y: 140 }, 0);
+      tl.set(ul, { scaleX: 0 }, 0);
+
+      // Caret blink while idle (explicit sets, seek-safe).
+      var blinkTimes = [0.5, 0.9, 1.3];
+      blinkTimes.forEach(function (t, n) { tl.set(caret, { opacity: n % 2 === 0 ? 0 : 1 }, t); });
+      tl.set(caret, { opacity: 1 }, 1.5);
+
+      // Scene 2: per-character typing on "Split" (1.58s) through ~3.5s.
+      var typeStart = 1.58, typeEnd = 3.5;
+      var step = (typeEnd - typeStart) / (PROMPT.length - 1);
+      tl.set(ph, { opacity: 0 }, typeStart);
+      chars.forEach(function (c, n) { tl.set(c, { display: "inline" }, typeStart + n * step); });
+
+      // Send: input clears, user bubble pops in at the right.
+      var sendT = 3.68;
+      tl.set(chars, { display: "none" }, sendT);
+      tl.set(ph, { opacity: 1 }, sendT + 0.05);
+      tl.fromTo(bubble,
+        { opacity: 0, y: 380, scale: 0.9 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "expo.out" }, sendT);
+
+      // Scene 3: tool chip with spinner resolving to a tick, then the header line.
+      tl.fromTo(chip, { opacity: 0, scale: 0.9, x: -10 }, { opacity: 1, scale: 1, x: 0, duration: 0.5, ease: "back.out(1.4)" }, 4.05);
+      tl.fromTo(spin, { rotation: 0 }, { rotation: 900, duration: 1.0, ease: "none" }, 4.05);
+      tl.set(spin, { opacity: 0 }, 5.05);
+      tl.fromTo(tick, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(1.4)" }, 5.05);
+      tl.fromTo(head, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 5.25);
+
+      // Scene 4: result rows cascade on "pay link" / "each"; real split page rises at right.
+      tl.fromTo(row1, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 6.4);
+      tl.fromTo(row2, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 6.92);
+      tl.fromTo(phone, { opacity: 0, y: 140 }, { opacity: 1, y: 0, duration: 1.4, ease: "power3.out" }, 6.0);
+
+      // Scene 5: push-in toward Meera's exact amount on "exact"; sunny underline on "amount".
+      var s = 1.45, px = 760, py = 500;
+      tl.to(cam, { scale: s, x: 960 - s * px, y: 470 - s * py, duration: 1.86, ease: "expo.out" }, 7.94);
+      tl.to(phone, { x: 90, duration: 1.86, ease: "expo.out" }, 7.94);
+      tl.to(row2, { opacity: 0.55, duration: 0.8, ease: "power2.out" }, 8.1);
+      tl.fromTo(ul, { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 8.45);
+
+      tl.set({}, {}, DURATION);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines[ID] = tl;
+    })();
+  </script>
+</template>
