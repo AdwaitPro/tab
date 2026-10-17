@@ -565,6 +565,7 @@ function Receipt(props: {
       <div className="print-down">
       <div className="ticket-top pb-5">
       <div className="relative px-6 pt-8 pb-6 text-center sm:px-7">
+        <PaidStamp />
         <div className="relative mx-auto w-fit">
           <CheckMark />
           <SparkleBurst />
@@ -591,7 +592,6 @@ function Receipt(props: {
         <p className="relative mt-4 flex items-baseline justify-center gap-2">
           <Odometer value={formatUsdc(props.amount)} className="text-amount sm:text-[80px]" delayMs={500} />
           <span className="text-[20px] font-bold text-muted">USDC</span>
-          <PaidStamp />
         </p>
       </div>
       </div>
@@ -637,7 +637,7 @@ function Receipt(props: {
 /** Rubber stamp with an ink-texture SVG filter; lands after the receipt prints. */
 function PaidStamp() {
   return (
-    <svg viewBox="0 0 200 84" className="stamp pointer-events-none absolute -top-[46%] left-[84%] w-[104px] text-success" aria-hidden="true">
+    <svg viewBox="0 0 200 84" className="stamp pointer-events-none absolute top-[64px] left-[80%] w-[96px] text-success" aria-hidden="true">
       <defs>
         <filter id="ink" x="-10%" y="-10%" width="120%" height="120%">
           <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="noise" />

@@ -748,6 +748,8 @@ p {
     radial-gradient(circle var(--notch) at 100% 100%, transparent 97%, #000 100%) right / 51% 100% no-repeat;
 }
 .ticket-bottom {
+  position: relative;
+  margin-top: -1px;
   border-radius: 0 0 var(--radius-card) var(--radius-card);
   -webkit-mask:
     radial-gradient(circle var(--notch) at 0 0, transparent 97%, #000 100%) left / 51% 100% no-repeat,

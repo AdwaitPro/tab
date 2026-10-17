@@ -88,7 +88,7 @@ export default function Landing() {
           </div>
 
           <div className="relative flex justify-center lg:justify-end">
-            <Coin className="absolute -top-8 -left-2 hidden size-20 sm:left-6 sm:block" float rotate={-12} />
+            <Coin className="absolute bottom-2 left-0 z-20 hidden size-20 sm:block" float rotate={-12} />
             <HeroDemo />
           </div>
         </section>

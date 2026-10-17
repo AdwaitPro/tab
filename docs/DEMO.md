@@ -12,6 +12,11 @@ Every transaction is real on Base mainnet. Use small amounts and never fake a sc
 - [ ] Screen recorder: QuickTime or Screen Studio, mic check
 - [ ] Close notifications (Do Not Disturb)
 
+## Who does what
+- **Adwait types every prompt that moves money** and approves it with a passkey in PayBox: paying a Tab, funding a deal or bet, joining, releasing, settling. This is the PayBox story: a human approves every dollar.
+- **The agent does everything else:** creating splits and requests, checking status, "who owes me", live quotes, reading deals and bets.
+- **Meera uses the pay pages** (`/r`, `/b`, `/d`) from Zerion: pay, join, mark delivered, settle, withdraw.
+
 ## Script
 
 | Time | Screen | Voice-over (Adwait) |

@@ -17,14 +17,9 @@ export function Odometer({ value, className, delayMs = 120 }: { value: string; c
     // Mount-time switch to the animated rendering; SSR keeps the static value.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setPhase("armed");
-    let inner = 0;
-    const outer = requestAnimationFrame(() => {
-      inner = requestAnimationFrame(() => setPhase("rolled"));
-    });
-    return () => {
-      cancelAnimationFrame(outer);
-      cancelAnimationFrame(inner);
-    };
+    // A timer (not rAF) so the roll still completes in background tabs, where rAF is paused.
+    const t = setTimeout(() => setPhase("rolled"), 34);
+    return () => clearTimeout(t);
   }, [value]);
 
   if (phase === "static") {

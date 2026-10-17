@@ -1,6 +1,6 @@
 import { ArrowUpRight, BadgeCheck } from "lucide-react";
 import { Odometer } from "@/components/motion/odometer";
-import { formatUsdc } from "@/lib/amount";
+import { formatUsdcShort } from "@/lib/amount";
 import { addressUrl } from "@/lib/constants";
 import { liveStats } from "@/lib/server/stats";
 
@@ -11,7 +11,7 @@ export async function LiveStrip({ escrow }: { escrow: string | undefined }) {
   const stats = await liveStats();
   if (!stats) return null;
   const items = [
-    { label: "USDC settled through Tab", value: formatUsdc(BigInt(stats.settledAtomic)) },
+    { label: "USDC settled through Tab", value: formatUsdcShort(BigInt(stats.settledAtomic)) },
     { label: "Escrowed deals", value: stats.deals },
     { label: "Bets between friends", value: stats.bets },
   ];
@@ -27,9 +27,9 @@ export async function LiveStrip({ escrow }: { escrow: string | undefined }) {
         </p>
         <dl className="grid grid-cols-3 gap-4 sm:flex sm:gap-10">
           {items.map((item) => (
-            <div key={item.label}>
-              <dt className="text-[12px] leading-4 text-subtle">{item.label}</dt>
-              <dd className="mt-1 text-[24px] leading-none font-bold tracking-[-0.03em]">
+            <div key={item.label} className="min-w-0">
+              <dt className="min-h-8 text-[12px] leading-4 text-subtle">{item.label}</dt>
+              <dd className="mt-1 overflow-hidden text-[20px] leading-none font-bold tracking-[-0.03em] sm:text-[24px]">
                 <Odometer value={item.value} />
               </dd>
             </div>
