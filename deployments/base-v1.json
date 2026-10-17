@@ -1,0 +1,20 @@
+{
+  "address": "0xA3Dc165ec85da58705Ba7CcE3283cF7ba79bD0c8",
+  "block": 52737895,
+  "chainId": 8453,
+  "feeds": {
+    "BTC": {
+      "address": "0x64c911996D3c6aC71f9b455B1E8E7266BcbD848F",
+      "decimals": 8,
+      "maxStaleness": 3600
+    },
+    "ETH": {
+      "address": "0x71041dddad3595F9CEd3DcCFBe3D1F4b0a16Bb70",
+      "decimals": 8,
+      "maxStaleness": 3600
+    }
+  },
+  "sequencerFeed": "0xBCF85224fc0756B9Fa45aA7892530B47e10b6433",
+  "txHash": "0xd137dbfda91a74d017ab7667289552681c412c2357b8dfe822d91c9a71f6fe56",
+  "usdc": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+}

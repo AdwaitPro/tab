@@ -1,0 +1,21 @@
+# secrets
+.secrets/
+.env*
+!.env.example
+# deps and build output
+node_modules/
+.next/
+dist/
+out/
+.vercel/
+# foundry
+contracts/cache/
+contracts/out/
+contracts/broadcast/*/dry-run/
+# local tooling
+.playwright-mcp/
+.DS_Store
+*.log
+# Satoshi (Fontshare license): used in the deployed app, not redistributed in this repo
+web/src/fonts/Satoshi-*
+web/assets/fonts/Satoshi-*
