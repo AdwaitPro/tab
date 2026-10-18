@@ -107,3 +107,23 @@ export const schema = { requests, splits, terms, chainCursor, escrowObjects };
 export type RequestRow = typeof requests.$inferSelect;
 export type SplitRow = typeof splits.$inferSelect;
 export type EscrowObjectRow = typeof escrowObjects.$inferSelect;
+
+// Privacy-preserving page views: no IPs or user ids stored. `visitor` is a salted hash
+// that rotates daily, so it counts unique visitors per day without tracking anyone across days.
+export const pageViews = pgTable(
+  "page_views",
+  {
+    id: bigint("id", { mode: "bigint" }).primaryKey().generatedAlwaysAsIdentity(),
+    at: timestamp("at", { withTimezone: true }).notNull().defaultNow(),
+    path: text("path").notNull(),
+    country: text("country"),
+    region: text("region"),
+    city: text("city"),
+    referrerHost: text("referrer_host"),
+    utmSource: text("utm_source"),
+    device: text("device", { enum: ["mobile", "tablet", "desktop"] }).notNull(),
+    browser: text("browser"),
+    visitor: text("visitor").notNull(),
+  },
+  (t) => [index("page_views_at_idx").on(t.at)],
+);

@@ -18,6 +18,8 @@
     "@neondatabase/serverless": "1.2.0",
     "@radix-ui/react-slot": "^1.5.0",
     "@tanstack/react-query": "^5.104.3",
+    "@vercel/analytics": "1.5.0",
+    "@vercel/speed-insights": "1.2.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "drizzle-orm": "0.45.4",

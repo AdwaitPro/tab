@@ -12,8 +12,12 @@ export async function LiveStrip({ escrow }: { escrow: string | undefined }) {
   if (!stats) return null;
   const items = [
     { label: "USDC settled through Tab", value: formatUsdcShort(BigInt(stats.settledAtomic)) },
+    { label: "Payments verified on-chain", value: stats.payments },
     { label: "Escrowed deals", value: stats.deals },
     { label: "Bets between friends", value: stats.bets },
+    // Fixed engineering facts, true for the deployed contract (contracts/SECURITY.md).
+    { label: "Contract tests", value: "124" },
+    { label: "Test coverage", value: "100%" },
   ];
   return (
     <section aria-label="Live on Base" className="py-6">
@@ -25,7 +29,7 @@ export async function LiveStrip({ escrow }: { escrow: string | undefined }) {
           </span>
           Live on Base
         </p>
-        <dl className="grid grid-cols-3 gap-4 sm:flex sm:gap-10">
+        <dl className="grid grid-cols-3 gap-4 sm:flex sm:flex-wrap sm:gap-x-8 sm:gap-y-4">
           {items.map((item) => (
             <div key={item.label} className="min-w-0">
               <dt className="min-h-8 text-[12px] leading-4 text-subtle">{item.label}</dt>

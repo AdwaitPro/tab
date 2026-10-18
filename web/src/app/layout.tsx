@@ -1,4 +1,8 @@
 import type { Metadata, Viewport } from "next";
+import { Suspense } from "react";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { PageViewBeacon } from "@/components/page-view-beacon";
 import { Geist_Mono, Instrument_Serif } from "next/font/google";
 import localFont from "next/font/local";
 import { publicBaseUrl } from "@/lib/server/env";
@@ -48,6 +52,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <div className="blob blob-c" />
         </div>
         {children}
+        <Analytics />
+        <SpeedInsights />
+        <Suspense fallback={null}>
+          <PageViewBeacon />
+        </Suspense>
       </body>
     </html>
   );

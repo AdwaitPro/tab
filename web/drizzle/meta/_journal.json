@@ -8,6 +8,13 @@
       "when": 1792264360179,
       "tag": "0000_init",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1792310135301,
+      "tag": "0001_open_black_bolt",
+      "breakpoints": true
     }
   ]
 }

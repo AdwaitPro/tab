@@ -9,6 +9,7 @@ import { serverEnv } from "./env";
 
 export interface LiveStats {
   settledAtomic: string;
+  payments: string;
   deals: string;
   bets: string;
 }
@@ -22,7 +23,10 @@ export async function liveStats(): Promise<LiveStats | null> {
     const db = await getDb();
     const [[row], counters] = await Promise.all([
       db
-        .select({ total: sql<string>`coalesce(sum(${requests.uniqueAtomic}), 0)::text` })
+        .select({
+          total: sql<string>`coalesce(sum(${requests.uniqueAtomic}), 0)::text`,
+          count: sql<string>`count(*)::text`,
+        })
         .from(requests)
         .where(and(inArray(requests.status, ["paid", "paid_late"]), isNotNull(requests.paidTx))),
       escrow
@@ -33,7 +37,7 @@ export async function liveStats(): Promise<LiveStats | null> {
         : Promise.resolve([1n, 1n] as const),
     ]);
     const minusOne = (n: bigint) => (n > 0n ? n - 1n : 0n).toString();
-    return { settledAtomic: row?.total ?? "0", deals: minusOne(counters[0]), bets: minusOne(counters[1]) };
+    return { settledAtomic: row?.total ?? "0", payments: row?.count ?? "0", deals: minusOne(counters[0]), bets: minusOne(counters[1]) };
   } catch {
     return null;
   }
